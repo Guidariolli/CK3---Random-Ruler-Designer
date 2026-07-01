@@ -196,6 +196,8 @@ input[type="range"]::-moz-range-thumb{
 .collapse summary::-webkit-details-marker{display:none;}
 .collapse .caret{color:var(--gold);font-size:13px;transition:transform .18s;}
 .collapse[open] .caret{transform:rotate(90deg);}
+.collapse .c-head{display:flex;flex-direction:column;gap:1px;min-width:0;}
+.collapse .c-head .dim{font-size:12.5px;line-height:1.35;}
 .collapse .c-title{font-weight:600;color:var(--text);}
 .collapse .c-body{padding:2px 12px 12px;border-top:1px solid var(--line);margin-top:2px;padding-top:10px;}
 .c-actions{display:flex;gap:8px;margin-bottom:9px;}

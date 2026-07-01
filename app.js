@@ -128,7 +128,7 @@
     const ownedDlc = checkedVals("dlc");
     const extraCats = checkedVals("cat");
     const capOn = $("achievementToggle").checked;
-    const ageOn = $("ageToggle").checked;
+    const ageOn = true; // age cost is always counted (toggle removed by request)
     const cap = DATA.config.point_cap;
     const minPts = parseInt($("minPoints").value, 10) || 0;
     const focus = $("focusSel").value; // "" or a skill key
