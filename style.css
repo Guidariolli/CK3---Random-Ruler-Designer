@@ -1,0 +1,145 @@
+:root{
+  --bg:#12100c; --panel:#1c1813; --panel2:#241f18; --line:#3a3226;
+  --gold:#c9a34e; --gold2:#e6c877; --text:#e9e2d2; --muted:#a89c82;
+  --green:#6fae5b; --red:#c15a4e; --blue:#5b8fb0;
+  --shadow:0 4px 18px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:radial-gradient(1200px 600px at 50% -10%, #241d12 0%, var(--bg) 60%);
+  color:var(--text); font-family:"Segoe UI",Roboto,system-ui,sans-serif; line-height:1.5;
+  min-height:100vh;
+}
+/* BG.png background at 20% opacity, fixed behind all content */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:url("BG.png") center center / cover no-repeat fixed;
+  opacity:0.2;
+}
+.app{max-width:1240px; margin:0 auto; padding:24px 16px 60px}
+main{display:grid; grid-template-columns:minmax(330px,380px) 1fr; gap:20px; align-items:start}
+.controls{position:sticky; top:16px}
+@media(max-width:860px){ main{grid-template-columns:1fr} .controls{position:static} }
+/* phosphor icon tweaks */
+.ph{vertical-align:-0.125em; line-height:1}
+header h1 .ph{color:var(--gold2)}
+.lk-label .ph, .cf-label .ph{color:var(--gold); margin-right:2px}
+.lk-toggle .ph{font-size:1rem}
+button.primary .ph{vertical-align:-0.1em; margin-right:3px}
+.tdlc .ph{font-size:.85em; vertical-align:-0.05em}
+.sk-name .ph{color:var(--gold2)}
+header h1{margin:0 0 4px; font-size:1.9rem; color:var(--gold2);
+  text-shadow:0 2px 6px rgba(0,0,0,.6); letter-spacing:.5px}
+header .sub{margin:0 0 20px; color:var(--muted)}
+header .sub strong{color:var(--gold)}
+
+.panel{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:20px; margin-bottom:0; box-shadow:var(--shadow)}
+
+/* controls */
+.ctl-row.toggles{display:flex; flex-wrap:wrap; gap:16px; margin-bottom:16px}
+.switch{display:flex; align-items:center; gap:8px; cursor:pointer; font-size:.95rem}
+.switch em{color:var(--muted); font-style:normal; font-size:.85rem}
+.switch input{width:18px; height:18px; accent-color:var(--gold)}
+
+/* fixar cultura / fé / idade */
+.lockgrid{display:flex; flex-direction:column; gap:8px; margin-bottom:6px}
+.lockrow{display:flex; align-items:center; gap:10px}
+.lk-label{flex:0 0 90px; font-size:.9rem; color:var(--gold2)}
+.lockrow select, .lockrow input[type="number"]{
+  flex:1 1 auto; min-width:0; padding:8px 10px; border-radius:8px; font-size:.9rem;
+  background:#171310; color:var(--text); border:1px solid var(--line)}
+.lockrow input[type="number"]{max-width:120px}
+.lk-toggle{display:inline-flex; align-items:center; cursor:pointer; user-select:none;
+  border:1px solid var(--line); border-radius:8px; padding:6px 9px; background:#171310; opacity:.55; transition:.15s}
+.lk-toggle input{display:none}
+.lk-toggle:has(input:checked){opacity:1; border-color:var(--gold); background:#2a2114}
+.lk-hint{font-size:.78rem; color:var(--muted); margin:4px 0 14px}
+
+/* pontos mínimos */
+.minrow{margin-bottom:14px}
+.minrow label{font-size:.9rem; color:var(--gold2)}
+.minrow input[type="range"]{width:100%; accent-color:var(--gold); margin-top:6px}
+#minWarn{display:block}
+
+details.group{border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+  margin-bottom:14px; background:var(--panel2)}
+details.group summary{cursor:pointer; font-weight:600; color:var(--gold2); user-select:none}
+details.group summary .hint{font-weight:400; color:var(--muted); font-size:.82rem}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+.chip{display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:20px;
+  border:1px solid var(--line); background:#171310; cursor:pointer; font-size:.85rem; transition:.15s}
+.chip input{display:none}
+.chip.on{border-color:var(--gold); background:#2a2114; color:var(--gold2)}
+.chip .cnt{color:var(--muted); font-size:.75rem}
+.mini{margin-top:10px}
+.link{background:none; border:none; color:var(--blue); cursor:pointer; font-size:.82rem; padding:0 8px 0 0}
+.link:hover{text-decoration:underline}
+
+button.primary{width:100%; margin-top:6px; padding:14px; font-size:1.1rem; font-weight:700;
+  color:#1a1508; background:linear-gradient(180deg,var(--gold2),var(--gold));
+  border:none; border-radius:10px; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,.4); transition:.15s}
+button.primary:hover{filter:brightness(1.08); transform:translateY(-1px)}
+button.primary:active{transform:translateY(0)}
+
+/* result */
+.char-head{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:flex-start}
+.char-head h2{margin:0; color:var(--gold2); font-size:1.4rem}
+.char-meta{margin:4px 0 0; color:var(--muted)}
+.points{text-align:right; min-width:180px}
+.points-num{font-size:1.8rem; font-weight:800; color:var(--gold2)}
+.points-num small{font-size:1rem; color:var(--muted); font-weight:400}
+.points-label{font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.5px}
+.bar{height:8px; background:#0e0b07; border-radius:6px; overflow:hidden; margin:8px 0 4px; border:1px solid var(--line)}
+.bar-fill{height:100%; width:0; background:linear-gradient(90deg,var(--green),var(--gold)); transition:width .4s}
+.bar-fill.over{background:linear-gradient(90deg,var(--gold),var(--red))}
+.points-rem{font-size:.82rem; color:var(--muted)}
+
+.points-break{font-size:.72rem; color:var(--muted); margin-top:2px}
+
+/* perícias */
+.skillgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:18px 0 4px}
+.skill{background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:8px 10px; text-align:center}
+.skill .sk-name{display:block; font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.4px}
+.skill .sk-val{font-size:1.35rem; font-weight:800; color:var(--gold2)}
+.skill .sk-cost{font-size:.72rem}
+.skill .sk-cost.pos{color:var(--gold)} .skill .sk-cost.neg{color:var(--green)} .skill .sk-cost.zero{color:var(--muted)}
+.skill.edu{border-color:var(--gold)}
+.skill.focus{border-color:var(--gold2); box-shadow:0 0 0 1px var(--gold2) inset}
+.focusrow select{flex:1 1 auto}
+.sk-edu{font-size:.6rem; color:var(--gold); background:#2a2114; border:1px solid var(--line); border-radius:4px; padding:1px 4px; vertical-align:middle}
+@media(max-width:560px){ .skillgrid{grid-template-columns:repeat(2,1fr)} }
+
+.cf-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0}
+.cf{background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:12px}
+.cf-label{display:block; font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.5px}
+.cf-val{font-size:1.1rem; color:var(--gold2); font-weight:600}
+
+.tgroup{margin-top:16px}
+.tgroup h3{margin:0 0 8px; font-size:.85rem; text-transform:uppercase; letter-spacing:.6px;
+  color:var(--muted); border-bottom:1px solid var(--line); padding-bottom:4px}
+.trait{display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  padding:8px 10px; border-radius:6px; margin-bottom:4px; background:var(--panel2)}
+.trait .tname{font-weight:600}
+.trait .tdlc{font-size:.72rem; color:var(--blue); margin-left:6px}
+.trait .tmods{display:block; font-size:.8rem; color:var(--muted); margin-top:2px}
+.trait .tcost{font-weight:700; white-space:nowrap}
+.tcost.pos{color:var(--gold2)} .tcost.neg{color:var(--green)} .tcost.zero{color:var(--muted)}
+
+.warn{margin-top:16px;  padding:10px 14px; border-radius:8px; background:#2a1c15;
+  border:1px solid var(--red); color:#e8b3aa; font-size:.9rem}
+footer{text-align:center; color:var(--muted); font-size:.8rem; margin-top:14px}
+@media(max-width:560px){
+  .cf-grid{grid-template-columns:1fr}
+  .points{text-align:left; min-width:100%}
+  .char-head{flex-direction:column}
+}
+
+/* Header: title left, Buy Me a Coffee right */
+header{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap}
+.head-left{min-width:0}
+.head-bmc{flex:0 0 auto; display:flex; align-items:center;
+  background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:16px 14px; box-shadow:var(--shadow)}
+.head-bmc img, .head-bmc a{height:42px !important}
+@media(max-width:560px){ .head-bmc{padding:12px 14px} }

@@ -1,0 +1,6115 @@
+window.CK3_DATA = {
+  "_meta": {
+    "source": "Crusader Kings III base game files",
+    "generator": "parse_ck3.py",
+    "trait_selection_rule": "has ruler_designer_cost AND not shown_in_ruler_designer=no",
+    "counts": {
+      "traits": 222,
+      "cultures": 244,
+      "faiths": 140
+    },
+    "dlc_note": "dlc is a curated best-effort map; base 00_traits.txt carries no per-trait DLC tag. null = base game or unattributed."
+  },
+  "config": {
+    "point_cap": 400,
+    "default_skill_value": 5,
+    "base_health": 5.0,
+    "default_education_trait": "education_intrigue_1",
+    "attribute_costs": {
+      "_note": "Marginal point cost to raise a skill TO value v. Skills default to 5 (free); below 5 refunds.",
+      "general": {
+        "bands": [
+          {
+            "min": 1,
+            "max": 4,
+            "formula": "2*v"
+          },
+          {
+            "min": 5,
+            "max": 8,
+            "formula": "4*(v-4)+8"
+          },
+          {
+            "min": 9,
+            "max": 12,
+            "formula": "7*(v-8)+24"
+          },
+          {
+            "min": 13,
+            "max": 16,
+            "formula": "11*(v-12)+52"
+          },
+          {
+            "min": 17,
+            "max": null,
+            "formula": "17*(v-16)+96"
+          }
+        ],
+        "table": {
+          "0": 0,
+          "1": 2,
+          "2": 4,
+          "3": 6,
+          "4": 8,
+          "5": 12,
+          "6": 16,
+          "7": 20,
+          "8": 24,
+          "9": 31,
+          "10": 38,
+          "11": 45,
+          "12": 52,
+          "13": 63,
+          "14": 74,
+          "15": 85,
+          "16": 96,
+          "17": 113,
+          "18": 130,
+          "19": 147,
+          "20": 164
+        }
+      },
+      "prowess": {
+        "bands": [
+          {
+            "min": 1,
+            "max": 4,
+            "formula": "1*v"
+          },
+          {
+            "min": 5,
+            "max": 8,
+            "formula": "2*(v-4)+4"
+          },
+          {
+            "min": 9,
+            "max": 12,
+            "formula": "4*(v-8)+12"
+          },
+          {
+            "min": 13,
+            "max": 16,
+            "formula": "7*(v-12)+28"
+          },
+          {
+            "min": 17,
+            "max": null,
+            "formula": "11*(v-16)+56"
+          }
+        ],
+        "table": {
+          "0": 0,
+          "1": 1,
+          "2": 2,
+          "3": 3,
+          "4": 4,
+          "5": 6,
+          "6": 8,
+          "7": 10,
+          "8": 12,
+          "9": 16,
+          "10": 20,
+          "11": 24,
+          "12": 28,
+          "13": 35,
+          "14": 42,
+          "15": 49,
+          "16": 56,
+          "17": 67,
+          "18": 78,
+          "19": 89,
+          "20": 100
+        }
+      }
+    },
+    "age_curve": {
+      "_note": "Points spent on age = round(age*multiplier). Use first AGE_LEVELS[i]>=age.",
+      "age_levels": [
+        10,
+        16,
+        18,
+        20,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        60,
+        70
+      ],
+      "multipliers": [
+        2,
+        2.25,
+        2.5,
+        2.7,
+        2.9,
+        3,
+        2.9,
+        2.8,
+        2.7,
+        2.6,
+        2.5,
+        2.4,
+        2.3,
+        2.2,
+        2.1,
+        2,
+        1.9,
+        1.8,
+        1.7,
+        1.6,
+        1.5,
+        1.4,
+        1.3,
+        1.2,
+        1.1,
+        1,
+        0.9,
+        0.8,
+        0.7,
+        0.6,
+        0.5,
+        0.4,
+        0.3,
+        0.2,
+        0.1,
+        0
+      ]
+    }
+  },
+  "traits": [
+    {
+      "id": "education_intrigue_1",
+      "name": "Amateurish Plotter",
+      "category": "education",
+      "cost": 0,
+      "opposites": [],
+      "group": "education_intrigue",
+      "level": 1,
+      "modifiers": {
+        "intrigue": 2,
+        "monthly_intrigue_lifestyle_xp_gain_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_intrigue_2",
+      "name": "Flamboyant Trickster",
+      "category": "education",
+      "cost": 20,
+      "opposites": [],
+      "group": "education_intrigue",
+      "level": 2,
+      "modifiers": {
+        "intrigue": 4,
+        "monthly_intrigue_lifestyle_xp_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_intrigue_3",
+      "name": "Intricate Webweaver",
+      "category": "education",
+      "cost": 40,
+      "opposites": [],
+      "group": "education_intrigue",
+      "level": 3,
+      "modifiers": {
+        "intrigue": 6,
+        "monthly_intrigue_lifestyle_xp_gain_mult": 0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_intrigue_4",
+      "name": "Elusive Shadow",
+      "category": "education",
+      "cost": 80,
+      "opposites": [],
+      "group": "education_intrigue",
+      "level": 4,
+      "modifiers": {
+        "intrigue": 8,
+        "monthly_intrigue_lifestyle_xp_gain_mult": 0.4
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_intrigue_5",
+      "name": "Conniving Puppetmaster",
+      "category": "education",
+      "cost": 150,
+      "opposites": [],
+      "group": "education_intrigue",
+      "level": 5,
+      "modifiers": {
+        "intrigue": 10,
+        "diplomacy": 3,
+        "monthly_intrigue_lifestyle_xp_gain_mult": 0.5,
+        "monthly_diplomacy_lifestyle_xp_gain_mult": 0.25,
+        "owned_hostile_scheme_success_chance_max_add": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_diplomacy_1",
+      "name": "Naive Appeaser",
+      "category": "education",
+      "cost": 0,
+      "opposites": [],
+      "group": "education_diplomacy",
+      "level": 1,
+      "modifiers": {
+        "diplomacy": 2,
+        "monthly_diplomacy_lifestyle_xp_gain_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_diplomacy_2",
+      "name": "Adequate Bargainer",
+      "category": "education",
+      "cost": 20,
+      "opposites": [],
+      "group": "education_diplomacy",
+      "level": 2,
+      "modifiers": {
+        "diplomacy": 4,
+        "monthly_diplomacy_lifestyle_xp_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_diplomacy_3",
+      "name": "Charismatic Negotiator",
+      "category": "education",
+      "cost": 40,
+      "opposites": [],
+      "group": "education_diplomacy",
+      "level": 3,
+      "modifiers": {
+        "diplomacy": 6,
+        "monthly_diplomacy_lifestyle_xp_gain_mult": 0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_diplomacy_4",
+      "name": "Gray Eminence",
+      "category": "education",
+      "cost": 80,
+      "opposites": [],
+      "group": "education_diplomacy",
+      "level": 4,
+      "modifiers": {
+        "diplomacy": 8,
+        "monthly_diplomacy_lifestyle_xp_gain_mult": 0.4
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_diplomacy_5",
+      "name": "Virtuoso Arbitrator",
+      "category": "education",
+      "cost": 150,
+      "opposites": [],
+      "group": "education_diplomacy",
+      "level": 5,
+      "modifiers": {
+        "diplomacy": 10,
+        "martial": 3,
+        "monthly_diplomacy_lifestyle_xp_gain_mult": 0.5,
+        "monthly_martial_lifestyle_xp_gain_mult": 0.25,
+        "owned_personal_scheme_success_chance_max_add": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_stewardship_1",
+      "name": "Indulgent Wastrel",
+      "category": "education",
+      "cost": 0,
+      "opposites": [],
+      "group": "education_stewardship",
+      "level": 1,
+      "modifiers": {
+        "stewardship": 2,
+        "monthly_stewardship_lifestyle_xp_gain_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_stewardship_2",
+      "name": "Thrifty Clerk",
+      "category": "education",
+      "cost": 20,
+      "opposites": [],
+      "group": "education_stewardship",
+      "level": 2,
+      "modifiers": {
+        "stewardship": 4,
+        "monthly_stewardship_lifestyle_xp_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_stewardship_3",
+      "name": "Fortune Builder",
+      "category": "education",
+      "cost": 40,
+      "opposites": [],
+      "group": "education_stewardship",
+      "level": 3,
+      "modifiers": {
+        "stewardship": 6,
+        "monthly_stewardship_lifestyle_xp_gain_mult": 0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_stewardship_4",
+      "name": "Midas Touched",
+      "category": "education",
+      "cost": 80,
+      "opposites": [],
+      "group": "education_stewardship",
+      "level": 4,
+      "modifiers": {
+        "stewardship": 8,
+        "monthly_stewardship_lifestyle_xp_gain_mult": 0.4
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_stewardship_5",
+      "name": "Golden Sovereign",
+      "category": "education",
+      "cost": 150,
+      "opposites": [],
+      "group": "education_stewardship",
+      "level": 5,
+      "modifiers": {
+        "stewardship": 10,
+        "learning": 3,
+        "monthly_stewardship_lifestyle_xp_gain_mult": 0.5,
+        "monthly_learning_lifestyle_xp_gain_mult": 0.25,
+        "vassal_tax_mult": 0.25
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_martial_1",
+      "name": "Misguided Warrior",
+      "category": "education",
+      "cost": 0,
+      "opposites": [],
+      "group": "education_martial",
+      "level": 1,
+      "modifiers": {
+        "martial": 2,
+        "monthly_martial_lifestyle_xp_gain_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_martial_2",
+      "name": "Tough Soldier",
+      "category": "education",
+      "cost": 20,
+      "opposites": [],
+      "group": "education_martial",
+      "level": 2,
+      "modifiers": {
+        "martial": 4,
+        "monthly_martial_lifestyle_xp_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_martial_3",
+      "name": "Skilled Tactician",
+      "category": "education",
+      "cost": 40,
+      "opposites": [],
+      "group": "education_martial",
+      "level": 3,
+      "modifiers": {
+        "martial": 6,
+        "monthly_martial_lifestyle_xp_gain_mult": 0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_martial_4",
+      "name": "Brilliant Strategist",
+      "category": "education",
+      "cost": 80,
+      "opposites": [],
+      "group": "education_martial",
+      "level": 4,
+      "modifiers": {
+        "martial": 8,
+        "monthly_martial_lifestyle_xp_gain_mult": 0.4
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_martial_5",
+      "name": "Exalted Warlord",
+      "category": "education",
+      "cost": 150,
+      "opposites": [],
+      "group": "education_martial",
+      "level": 5,
+      "modifiers": {
+        "martial": 10,
+        "stewardship": 3,
+        "monthly_martial_lifestyle_xp_gain_mult": 0.5,
+        "monthly_stewardship_lifestyle_xp_gain_mult": 0.25,
+        "army_siege_value_mult": 0.5,
+        "movement_speed": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_learning_1",
+      "name": "Conscientious Scribe",
+      "category": "education",
+      "cost": 0,
+      "opposites": [],
+      "group": "education_learning",
+      "level": 1,
+      "modifiers": {
+        "learning": 2,
+        "monthly_learning_lifestyle_xp_gain_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_learning_2",
+      "name": "Insightful Thinker",
+      "category": "education",
+      "cost": 20,
+      "opposites": [],
+      "group": "education_learning",
+      "level": 2,
+      "modifiers": {
+        "learning": 4,
+        "monthly_learning_lifestyle_xp_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_learning_3",
+      "name": "Astute Intellectual",
+      "category": "education",
+      "cost": 40,
+      "opposites": [],
+      "group": "education_learning",
+      "level": 3,
+      "modifiers": {
+        "learning": 6,
+        "monthly_learning_lifestyle_xp_gain_mult": 0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_learning_4",
+      "name": "Mastermind Philosopher",
+      "category": "education",
+      "cost": 80,
+      "opposites": [],
+      "group": "education_learning",
+      "level": 4,
+      "modifiers": {
+        "learning": 8,
+        "monthly_learning_lifestyle_xp_gain_mult": 0.4
+      },
+      "dlc": null
+    },
+    {
+      "id": "education_learning_5",
+      "name": "Erudite Oracle",
+      "category": "education",
+      "cost": 150,
+      "opposites": [],
+      "group": "education_learning",
+      "level": 5,
+      "modifiers": {
+        "learning": 10,
+        "intrigue": 3,
+        "monthly_learning_lifestyle_xp_gain_mult": 0.5,
+        "monthly_intrigue_lifestyle_xp_gain_mult": 0.25,
+        "development_growth": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "diplomat",
+      "name": "Diplomat",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 3,
+        "independent_ruler_opinion": 20,
+        "monthly_influence": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "family_first",
+      "name": "Family First",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": 0.2,
+        "dynasty_house_opinion": 10,
+        "close_relative_opinion": 15,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "august",
+      "name": "August",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "martial": 1,
+        "monthly_prestige": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_reveler",
+      "name": "Reveler",
+      "category": "lifestyle",
+      "cost": 20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "courtly_opinion": 5,
+        "intrigue": 1,
+        "same_opinion": 15
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_blademaster",
+      "name": "Blademaster",
+      "category": "lifestyle",
+      "cost": 20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "negate_health_penalty_add": 0.25,
+        "prowess": 3
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_hunter",
+      "name": "Hunter",
+      "category": "lifestyle",
+      "cost": 20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "same_opinion": 10,
+        "stress_loss_mult": 0.05,
+        "prowess": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "strategist",
+      "name": "Strategist",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 3,
+        "diplomacy": 1,
+        "enemy_hard_casualty_modifier": 0.25
+      },
+      "dlc": null
+    },
+    {
+      "id": "overseer",
+      "name": "Overseer",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "martial": 2,
+        "monthly_county_control_growth_add": 0.5,
+        "epidemic_resistance": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "gallant",
+      "name": "Gallant",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 2,
+        "prowess": 4,
+        "attraction_opinion": 20,
+        "accolade_glory_gain_mult": 0.2,
+        "monthly_prestige_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "architect",
+      "name": "Architect",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "build_speed": -0.15,
+        "holding_build_speed": -0.15,
+        "domicile_build_speed": -0.15,
+        "build_gold_cost": -0.1,
+        "holding_build_gold_cost": -0.1,
+        "domicile_build_gold_cost": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "administrator",
+      "name": "Administrator",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 3,
+        "diplomacy": 1,
+        "parochial_opinion": 10,
+        "vassal_opinion": 5,
+        "tributary_opinion": 5,
+        "epidemic_resistance": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "avaricious",
+      "name": "Avaricious",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "tax_mult": 0.15
+      },
+      "dlc": null
+    },
+    {
+      "id": "schemer",
+      "name": "Schemer",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "seducer",
+      "name": "Seducer",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 3,
+        "attraction_opinion": 40,
+        "fertility": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "torturer",
+      "name": "Torturer",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "dread_gain_mult": 0.5,
+        "prowess": 4,
+        "levy_size": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "whole_of_body",
+      "name": "Whole of Body",
+      "category": "lifestyle",
+      "cost": 75,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": 0.5,
+        "fertility": 0.2,
+        "stress_gain_mult": -0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "scholar",
+      "name": "Scholar",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 3,
+        "owned_personal_scheme_success_chance_add": 10,
+        "owned_hostile_scheme_success_chance_add": 10,
+        "development_growth_factor": 0.15,
+        "development_decline_factor": -0.15,
+        "county_fertility_growth_mult": 0.15
+      },
+      "dlc": null
+    },
+    {
+      "id": "theologian",
+      "name": "Theologian",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 3,
+        "monthly_piety_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_mystic",
+      "name": "Mystic",
+      "category": "lifestyle",
+      "cost": 20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_physician",
+      "name": "Physician",
+      "category": "lifestyle",
+      "cost": 20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 1,
+        "negate_health_penalty_add": 0.25
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_herbalist",
+      "name": "Herbalist",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "index": 256,
+        "learning": 2,
+        "intrigue": 2,
+        "negate_health_penalty_add": 0.5
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_gardener",
+      "name": "Gardener",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "stress_gain_mult": -0.2,
+        "courtier_and_guest_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "lustful",
+      "name": "Lustful",
+      "category": "personality",
+      "cost": 25,
+      "opposites": [
+        "chaste"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": 0.25,
+        "intrigue": 2,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "chaste",
+      "name": "Chaste",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "lustful"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": -0.25,
+        "learning": 2,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "gluttonous",
+      "name": "Gluttonous",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "temperate"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": -2,
+        "stress_loss_mult": 0.1,
+        "attraction_opinion": -5,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "temperate",
+      "name": "Temperate",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "gluttonous"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "health": 0.25,
+        "courtly_opinion": -10,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "greedy",
+      "name": "Greedy",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "generous"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "monthly_income_mult": 0.05,
+        "monthly_income_per_stress_level_mult": 0.1,
+        "courtly_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "generous",
+      "name": "Generous",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "greedy"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 3,
+        "monthly_income_mult": -0.1,
+        "courtly_opinion": 15,
+        "opposite_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "lazy",
+      "name": "Lazy",
+      "category": "personality",
+      "cost": -10,
+      "opposites": [
+        "diligent"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "intrigue": -1,
+        "stewardship": -1,
+        "martial": -1,
+        "learning": -1,
+        "character_travel_speed": -10,
+        "stress_loss_mult": 0.5
+      },
+      "dlc": null
+    },
+    {
+      "id": "diligent",
+      "name": "Diligent",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "lazy"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "stewardship": 3,
+        "learning": 3,
+        "parochial_opinion": 5,
+        "stress_loss_mult": -0.5,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "wrathful",
+      "name": "Wrathful",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "calm"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "martial": 3,
+        "intrigue": -1,
+        "parochial_opinion": -10,
+        "glory_hound_opinion": 5,
+        "courtly_opinion": -10,
+        "dread_baseline_add": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "calm",
+      "name": "Calm",
+      "category": "personality",
+      "cost": 25,
+      "opposites": [
+        "wrathful"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 1,
+        "intrigue": 1,
+        "enemy_scheme_secrecy_add": -10,
+        "opposite_opinion": -10,
+        "same_opinion": 10,
+        "stress_loss_mult": 0.1,
+        "dread_decay_mult": 0.5
+      },
+      "dlc": null
+    },
+    {
+      "id": "patient",
+      "name": "Patient",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "impatient"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 2,
+        "parochial_opinion": 10,
+        "liege_opinion": 5,
+        "opposite_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "impatient",
+      "name": "Impatient",
+      "category": "personality",
+      "cost": 25,
+      "opposites": [
+        "patient"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": -2,
+        "monthly_prestige_gain_mult": 0.2,
+        "character_travel_speed_mult": 0.25,
+        "character_travel_safety": -10,
+        "courtly_opinion": -10,
+        "parochial_opinion": -10,
+        "opinion_of_liege": -5,
+        "opposite_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "arrogant",
+      "name": "Arrogant",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "humble"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_prestige": 1,
+        "owned_scheme_secrecy_add": -10,
+        "opinion_of_liege": -5,
+        "opinion_of_vassal": -5,
+        "opposite_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "humble",
+      "name": "Humble",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "arrogant"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_piety": 0.5,
+        "clergy_opinion": 10,
+        "zealot_opinion": 10,
+        "opinion_of_liege": 10,
+        "opinion_of_vassal": 10,
+        "opposite_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "deceitful",
+      "name": "Deceitful",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "honest"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "intrigue": 4,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "honest",
+      "name": "Honest",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "deceitful"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "intrigue": -4,
+        "courtly_opinion": 5,
+        "opposite_opinion": -10,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "craven",
+      "name": "Craven",
+      "category": "personality",
+      "cost": -10,
+      "opposites": [
+        "brave"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": -2,
+        "prowess": -3,
+        "intrigue": 2,
+        "attraction_opinion": -10,
+        "glory_hound_opinion": -15,
+        "courtly_opinion": -5,
+        "same_opinion": 20,
+        "owned_scheme_secrecy_add": 10,
+        "character_travel_safety_mult": 0.25
+      },
+      "dlc": null
+    },
+    {
+      "id": "brave",
+      "name": "Brave",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "craven"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 2,
+        "prowess": 3,
+        "attraction_opinion": 10,
+        "glory_hound_opinion": 10,
+        "opposite_opinion": -10,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "shy",
+      "name": "Shy",
+      "category": "personality",
+      "cost": -10,
+      "opposites": [
+        "gregarious"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "learning": 1,
+        "character_travel_safety_mult": 0.25,
+        "epidemic_resistance": 5,
+        "attraction_opinion": -5,
+        "same_opinion": 10,
+        "parochial_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "gregarious",
+      "name": "Gregarious",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "shy"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "attraction_opinion": 5,
+        "same_opinion": 10,
+        "courtly_opinion": 5,
+        "monthly_influence": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "ambitious",
+      "name": "Ambitious",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "content"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 1,
+        "stewardship": 1,
+        "diplomacy": 1,
+        "martial": 1,
+        "learning": 1,
+        "prowess": 1,
+        "opinion_of_liege": -15,
+        "same_opinion": -15,
+        "glory_hound_opinion": 10,
+        "stress_gain_mult": 0.25
+      },
+      "dlc": null
+    },
+    {
+      "id": "content",
+      "name": "Content",
+      "category": "personality",
+      "cost": 20,
+      "opposites": [
+        "ambitious"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": -1,
+        "learning": 2,
+        "opinion_of_liege": 20,
+        "opinion_of_vassal": 10,
+        "same_opinion": 20,
+        "parochial_opinion": 10,
+        "stress_loss_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "arbitrary",
+      "name": "Arbitrary",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "just"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": -2,
+        "learning": -1,
+        "intrigue": 3,
+        "stress_gain_mult": -0.5,
+        "dread_baseline_add": 15,
+        "vassal_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "just",
+      "name": "Just",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "arbitrary"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "learning": 1,
+        "intrigue": -3,
+        "parochial_opinion": 15,
+        "minority_opinion": 15,
+        "opposite_opinion": -10,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "cynical",
+      "name": "Cynical",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "zealous"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 2,
+        "learning": 2,
+        "monthly_piety_gain_mult": -0.2,
+        "faith_conversion_piety_cost_mult": -0.2,
+        "opposite_opinion": -10,
+        "same_opinion": 10,
+        "zealot_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "zealous",
+      "name": "Zealous",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "cynical"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 2,
+        "monthly_piety_gain_mult": 0.2,
+        "faith_conversion_piety_cost_mult": 0.2,
+        "opposite_opinion": -10,
+        "same_opinion_if_same_faith": 15,
+        "opinion_of_different_faith": -35,
+        "zealot_opinion": 15
+      },
+      "dlc": null
+    },
+    {
+      "id": "paranoid",
+      "name": "Paranoid",
+      "category": "personality",
+      "cost": -10,
+      "opposites": [
+        "trusting"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "intrigue": 3,
+        "stress_gain_mult": 1,
+        "dread_gain_mult": 0.25,
+        "enemy_scheme_secrecy_add": -10,
+        "enemy_personal_scheme_success_chance_add": -25,
+        "character_travel_speed": -10,
+        "character_travel_safety": 10,
+        "opinion_of_vassal": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "trusting",
+      "name": "Trusting",
+      "category": "personality",
+      "cost": 10,
+      "opposites": [
+        "paranoid"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "intrigue": -2,
+        "enemy_hostile_scheme_success_chance_add": 15,
+        "opinion_of_liege": 15,
+        "opinion_of_vassal": 15,
+        "character_travel_safety": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "compassionate",
+      "name": "Compassionate",
+      "category": "personality",
+      "cost": 10,
+      "opposites": [
+        "callous",
+        "sadistic"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "intrigue": -2,
+        "minority_opinion": 15,
+        "courtly_opinion": 10,
+        "dread_decay_mult": 1,
+        "dread_baseline_add": -15,
+        "opposite_opinion": -15,
+        "attraction_opinion": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "callous",
+      "name": "Callous",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "compassionate",
+        "sadistic"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "intrigue": 2,
+        "courtly_opinion": -10,
+        "tyranny_gain_mult": -0.2,
+        "dread_gain_mult": 0.25,
+        "dread_decay_mult": -0.25,
+        "attraction_opinion": -5,
+        "close_relative_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "sadistic",
+      "name": "Sadistic",
+      "category": "personality",
+      "cost": 40,
+      "opposites": [
+        "compassionate",
+        "callous"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 2,
+        "prowess": 4,
+        "dread_baseline_add": 35,
+        "general_opinion": -10,
+        "courtly_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "stubborn",
+      "name": "Stubborn",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "fickle",
+        "eccentric"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 3,
+        "negate_health_penalty_add": 0.25,
+        "liege_opinion": -5,
+        "minority_opinion": -5,
+        "parochial_opinion": -10,
+        "courtly_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "fickle",
+      "name": "Fickle",
+      "category": "personality",
+      "cost": 25,
+      "opposites": [
+        "stubborn",
+        "eccentric"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 1,
+        "diplomacy": 2,
+        "stewardship": -2
+      },
+      "dlc": null
+    },
+    {
+      "id": "eccentric",
+      "name": "Eccentric",
+      "category": "personality",
+      "cost": 15,
+      "opposites": [
+        "fickle",
+        "stubborn"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 2,
+        "diplomacy": -2,
+        "stress_gain_mult": 0.5,
+        "stress_loss_mult": 0.5,
+        "monthly_lifestyle_xp_gain_mult": 0.2,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "vengeful",
+      "name": "Vengeful",
+      "category": "personality",
+      "cost": 30,
+      "opposites": [
+        "forgiving"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "intrigue": 2,
+        "prowess": 2,
+        "dread_gain_mult": 0.15
+      },
+      "dlc": null
+    },
+    {
+      "id": "forgiving",
+      "name": "Forgiving",
+      "category": "personality",
+      "cost": 25,
+      "opposites": [
+        "vengeful"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "intrigue": -2,
+        "learning": 1,
+        "prisoner_opinion": 15,
+        "opposite_opinion": -10,
+        "same_opinion": 10,
+        "minority_opinion": 15
+      },
+      "dlc": null
+    },
+    {
+      "id": "rowdy",
+      "name": "Rowdy",
+      "category": "childhood",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "maximum_age": 15,
+        "martial": 1,
+        "intrigue": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "charming",
+      "name": "Charming",
+      "category": "childhood",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "maximum_age": 15,
+        "intrigue": 1,
+        "diplomacy": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "curious",
+      "name": "Curious",
+      "category": "childhood",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "maximum_age": 15,
+        "diplomacy": 1,
+        "learning": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "pensive",
+      "name": "Pensive",
+      "category": "childhood",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "maximum_age": 15,
+        "learning": 1,
+        "stewardship": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "bossy",
+      "name": "Bossy",
+      "category": "childhood",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "maximum_age": 15,
+        "stewardship": 1,
+        "martial": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "drunkard",
+      "name": "Drunkard",
+      "category": "fame",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": -2,
+        "prowess": -2,
+        "health": -0.15,
+        "stress_loss_mult": 0.2,
+        "same_opinion": 10,
+        "character_travel_safety": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "hashishiyah",
+      "name": "Hashishiyah",
+      "category": "fame",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": -2,
+        "learning": -2,
+        "stress_loss_mult": 0.2,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "rakish",
+      "name": "Rakish",
+      "category": "fame",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": 1,
+        "diplomacy": -1,
+        "stress_loss_mult": 0.2,
+        "same_opinion": 5,
+        "attraction_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "reclusive",
+      "name": "Reclusive",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "stewardship": -1,
+        "stress_loss_mult": 0.2,
+        "epidemic_resistance": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "irritable",
+      "name": "Irritable",
+      "category": "fame",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "martial": -1,
+        "prowess": 2,
+        "dread_gain_mult": 0.1,
+        "stress_loss_mult": 0.2,
+        "attraction_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "flagellant",
+      "name": "Flagellant",
+      "category": "fame",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": -2,
+        "health": -0.15,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "profligate",
+      "name": "Profligate",
+      "category": "fame",
+      "cost": 10,
+      "opposites": [
+        "improvident"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_prestige": 0.5,
+        "monthly_income_mult": -0.1,
+        "stress_loss_mult": 0.2,
+        "courtly_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "improvident",
+      "name": "Improvident",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [
+        "profligate"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_income_mult": -0.15,
+        "monthly_piety": 0.5,
+        "diplomacy": 1,
+        "stress_loss_mult": 0.2,
+        "zealot_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "contrite",
+      "name": "Contrite",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "intrigue": -2,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "comfort_eater",
+      "name": "Comfort Eater",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [
+        "inappetetic"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": -1,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "inappetetic",
+      "name": "Inappetetic",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [
+        "comfort_eater"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "prowess": -3,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "journaller",
+      "name": "Journaller",
+      "category": "fame",
+      "cost": 15,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 1,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": "Tours and Tournaments"
+    },
+    {
+      "id": "confider",
+      "name": "Confider",
+      "category": "other",
+      "cost": 15,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 1,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "athletic",
+      "name": "Athletic",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": 1,
+        "health": 0.25,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "depressed_genetic",
+      "name": "depressed_genetic",
+      "category": "congenital",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": 2,
+      "modifiers": {
+        "diplomacy": -1,
+        "stewardship": -1,
+        "martial": -1,
+        "intrigue": -1,
+        "health": -0.5,
+        "fertility": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "lunatic_genetic",
+      "name": "lunatic_genetic",
+      "category": "congenital",
+      "cost": -15,
+      "opposites": [],
+      "group": null,
+      "level": 2,
+      "modifiers": {
+        "health": -0.25,
+        "vassal_opinion": -10,
+        "attraction_opinion": -10,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "possessed_genetic",
+      "name": "possessed_genetic",
+      "category": "congenital",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": 2,
+      "modifiers": {
+        "monthly_learning_lifestyle_xp_gain_mult": 0.1,
+        "health": -0.5,
+        "attraction_opinion": -10,
+        "same_opinion": 15
+      },
+      "dlc": null
+    },
+    {
+      "id": "ill",
+      "name": "Ill",
+      "category": "health",
+      "cost": 0,
+      "opposites": [
+        "pneumonic"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": -1,
+        "elderly_health": -1,
+        "prowess_mult": -0.4,
+        "fertility": -0.2,
+        "dread_baseline_add": -10,
+        "dread_loss_mult": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "pneumonic",
+      "name": "Pneumonia",
+      "category": "health",
+      "cost": 0,
+      "opposites": [
+        "ill"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "stewardship": -2,
+        "martial": -2,
+        "intrigue": -2,
+        "learning": -2,
+        "health": -3,
+        "elderly_health": -2,
+        "prowess_mult": -0.8,
+        "fertility": -0.5,
+        "dread_baseline_add": -10,
+        "dread_loss_mult": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "great_pox",
+      "name": "Great Pox",
+      "category": "health",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "inherit_chance": 10,
+        "diplomacy": -1,
+        "stewardship": -1,
+        "martial": -1,
+        "intrigue": -1,
+        "learning": -1,
+        "health": -1,
+        "fertility": -0.2,
+        "dread_baseline_add": -20,
+        "dread_loss_mult": 1,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "lovers_pox",
+      "name": "Lover's Pox",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "inherit_chance": 10,
+        "dread_baseline_add": -5,
+        "attraction_opinion": -20
+      },
+      "dlc": null
+    },
+    {
+      "id": "leper",
+      "name": "Leper",
+      "category": "health",
+      "cost": -30,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": -1.5,
+        "prowess_mult": -0.8,
+        "fertility": -0.95,
+        "dread_baseline_add": -20,
+        "dread_loss_mult": 1,
+        "attraction_opinion": -35,
+        "general_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "one_eyed",
+      "name": "One-Eyed",
+      "category": "health",
+      "cost": 10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 1,
+        "prowess": -2,
+        "dread_baseline_add": 10,
+        "attraction_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "one_legged",
+      "name": "One-Legged",
+      "category": "health",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 1,
+        "prowess": -4,
+        "dread_baseline_add": -10,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "disfigured",
+      "name": "Disfigured",
+      "category": "health",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -4,
+        "fertility": -0.2,
+        "attraction_opinion": -20
+      },
+      "dlc": null
+    },
+    {
+      "id": "infirm",
+      "name": "Infirm",
+      "category": "health",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "martial": -1,
+        "prowess_mult": -0.2,
+        "health": -0.25,
+        "fertility": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "withering_mind",
+      "name": "Withering Mind",
+      "category": "health",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": -2,
+        "monthly_lifestyle_xp_gain_mult": -0.25,
+        "stress_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "clouded_eyes",
+      "name": "Clouded Eyes",
+      "category": "health",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": -1,
+        "prowess": -2
+      },
+      "dlc": null
+    },
+    {
+      "id": "faltering_heart",
+      "name": "Faltering Heart",
+      "category": "health",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": -0.1,
+        "prowess": -1,
+        "character_travel_safety": -2,
+        "stress_gain_mult": 0.2,
+        "stress_loss_mult": -0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "fragile_bones",
+      "name": "Fragile Bones",
+      "category": "health",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "character_travel_speed_mult": -0.1,
+        "prowess_mult": -0.1,
+        "advantage": -3,
+        "life_expectancy": -3,
+        "enemy_hostile_scheme_success_chance_max_add": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "gout_ridden",
+      "name": "Gout Ridden",
+      "category": "health",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy_mult": -0.1,
+        "martial_mult": -0.1,
+        "prowess_mult": -0.2,
+        "health": -1,
+        "dread_baseline_add": -5,
+        "attraction_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "consumption",
+      "name": "Consumption",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "stewardship": -1,
+        "intrigue": -2,
+        "prowess_mult": -0.4,
+        "health": -2.5,
+        "child_health": -1,
+        "elderly_health": -2,
+        "dread_baseline_add": -10,
+        "dread_loss_mult": 1,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "cancer",
+      "name": "Cancer",
+      "category": "health",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": -3,
+        "elderly_health": -1,
+        "fertility": -0.2,
+        "dread_baseline_add": -15,
+        "dread_loss_mult": 1
+      },
+      "dlc": null
+    },
+    {
+      "id": "typhus",
+      "name": "Typhus",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "stewardship": -2,
+        "intrigue": -1,
+        "learning": -2,
+        "prowess_mult": -0.8,
+        "health": -4.5,
+        "elderly_health": -1,
+        "fertility": -0.2,
+        "dread_baseline_add": -15,
+        "dread_loss_mult": 1,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "smallpox",
+      "name": "Smallpox",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "stewardship": -1,
+        "learning": -2,
+        "prowess_mult": -0.8,
+        "health": -4.5,
+        "elderly_health": -1.5,
+        "fertility": -0.25,
+        "dread_baseline_add": -15,
+        "dread_loss_mult": 1,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "measles",
+      "name": "measles",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "stewardship": -1,
+        "intrigue": -1,
+        "learning": -2,
+        "prowess_mult": -0.4,
+        "health": -3,
+        "child_health": -3,
+        "dread_baseline_add": -5,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "dysentery",
+      "name": "dysentery",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "martial": -1,
+        "intrigue": -2,
+        "prowess_mult": -0.8,
+        "health": -3.5,
+        "elderly_health": -2,
+        "dread_baseline_add": -50,
+        "attraction_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "ergotism",
+      "name": "ergotism",
+      "category": "health",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -6,
+        "stewardship": -1,
+        "intrigue": -2,
+        "learning": -2,
+        "health": -3.5,
+        "dread_baseline_add": -25,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "scarred",
+      "name": "Scarred",
+      "category": "health",
+      "cost": 10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_prestige": 0.1,
+        "attraction_opinion": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "eunuch_1",
+      "name": "Eunuch",
+      "category": "health",
+      "cost": -10,
+      "opposites": [
+        "beardless_eunuch",
+        "#You",
+        "can't",
+        "have",
+        "both"
+      ],
+      "group": null,
+      "level": 1,
+      "modifiers": {
+        "attraction_opinion": -10,
+        "glory_hound_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "beardless_eunuch",
+      "name": "Beardless Eunuch",
+      "category": "health",
+      "cost": -15,
+      "opposites": [
+        "eunuch_1",
+        "#You",
+        "can't",
+        "have",
+        "both"
+      ],
+      "group": null,
+      "level": 2,
+      "modifiers": {
+        "attraction_opinion": -10,
+        "glory_hound_opinion": -20,
+        "prowess": -4
+      },
+      "dlc": null
+    },
+    {
+      "id": "blind",
+      "name": "Blind",
+      "category": "health",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": -6,
+        "stewardship": -2,
+        "intrigue": -2,
+        "prowess": -10,
+        "health": -0.25,
+        "dread_baseline_add": -10,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "beauty_bad_1",
+      "name": "Homely",
+      "category": "congenital",
+      "cost": -10,
+      "opposites": [
+        "beauty_good",
+        "beauty_bad_2",
+        "beauty_bad_3"
+      ],
+      "group": "beauty_bad",
+      "level": 1,
+      "modifiers": {
+        "diplomacy": -1,
+        "fertility": -0.1,
+        "attraction_opinion": -10,
+        "portrait_extremity_shift": 0.1,
+        "ugliness_portrait_extremity_shift": 0.4
+      },
+      "dlc": null
+    },
+    {
+      "id": "beauty_bad_2",
+      "name": "Ugly",
+      "category": "congenital",
+      "cost": -20,
+      "opposites": [
+        "beauty_good",
+        "beauty_bad_3",
+        "beauty_bad_1"
+      ],
+      "group": "beauty_bad",
+      "level": 2,
+      "modifiers": {
+        "diplomacy": -2,
+        "fertility": -0.2,
+        "attraction_opinion": -20,
+        "portrait_extremity_shift": 0.18,
+        "ugliness_portrait_extremity_shift": 0.6
+      },
+      "dlc": null
+    },
+    {
+      "id": "beauty_bad_3",
+      "name": "Hideous",
+      "category": "congenital",
+      "cost": -30,
+      "opposites": [
+        "beauty_good",
+        "beauty_bad_2",
+        "beauty_bad_1"
+      ],
+      "group": "beauty_bad",
+      "level": 3,
+      "modifiers": {
+        "diplomacy": -3,
+        "fertility": -0.3,
+        "attraction_opinion": -30,
+        "portrait_extremity_shift": 0.27,
+        "ugliness_portrait_extremity_shift": 0.8
+      },
+      "dlc": null
+    },
+    {
+      "id": "beauty_good_1",
+      "name": "Comely",
+      "category": "congenital",
+      "cost": 40,
+      "opposites": [
+        "beauty_bad",
+        "beauty_good_2",
+        "beauty_good_3"
+      ],
+      "group": "beauty_good",
+      "level": 1,
+      "modifiers": {
+        "diplomacy": 1,
+        "fertility": 0.1,
+        "attraction_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "beauty_good_2",
+      "name": "Attractive",
+      "category": "congenital",
+      "cost": 80,
+      "opposites": [
+        "beauty_bad",
+        "beauty_good_1",
+        "beauty_good_3"
+      ],
+      "group": "beauty_good",
+      "level": 2,
+      "modifiers": {
+        "diplomacy": 2,
+        "fertility": 0.2,
+        "attraction_opinion": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "beauty_good_3",
+      "name": "Beautiful",
+      "category": "congenital",
+      "cost": 120,
+      "opposites": [
+        "beauty_bad",
+        "beauty_good_2",
+        "beauty_good_1"
+      ],
+      "group": "beauty_good",
+      "level": 3,
+      "modifiers": {
+        "diplomacy": 3,
+        "fertility": 0.3,
+        "attraction_opinion": 30
+      },
+      "dlc": null
+    },
+    {
+      "id": "intellect_bad_1",
+      "name": "Slow",
+      "category": "congenital",
+      "cost": -15,
+      "opposites": [
+        "shrewd",
+        "intellect_good",
+        "intellect_bad_2",
+        "#To",
+        "prevent",
+        "multiple",
+        "tiers",
+        "of",
+        "the",
+        "same",
+        "congenital",
+        "trait",
+        "intellect_bad_3"
+      ],
+      "group": "intellect_bad",
+      "level": 1,
+      "modifiers": {
+        "diplomacy": -2,
+        "martial": -2,
+        "stewardship": -2,
+        "intrigue": -2,
+        "learning": -2,
+        "monthly_lifestyle_xp_gain_mult": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "intellect_bad_2",
+      "name": "Stupid",
+      "category": "congenital",
+      "cost": -30,
+      "opposites": [
+        "shrewd",
+        "intellect_good",
+        "intellect_bad_3",
+        "#To",
+        "prevent",
+        "multiple",
+        "tiers",
+        "of",
+        "the",
+        "same",
+        "congenital",
+        "trait",
+        "intellect_bad_1"
+      ],
+      "group": "intellect_bad",
+      "level": 2,
+      "modifiers": {
+        "diplomacy": -4,
+        "martial": -4,
+        "stewardship": -4,
+        "intrigue": -4,
+        "learning": -4,
+        "monthly_lifestyle_xp_gain_mult": -0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "intellect_bad_3",
+      "name": "Imbecile",
+      "category": "congenital",
+      "cost": -45,
+      "opposites": [
+        "shrewd",
+        "intellect_good",
+        "intellect_bad_2",
+        "#To",
+        "prevent",
+        "multiple",
+        "tiers",
+        "of",
+        "the",
+        "same",
+        "congenital",
+        "trait",
+        "intellect_bad_1"
+      ],
+      "group": "intellect_bad",
+      "level": 3,
+      "modifiers": {
+        "diplomacy": -8,
+        "martial": -8,
+        "stewardship": -8,
+        "intrigue": -8,
+        "learning": -8,
+        "monthly_lifestyle_xp_gain_mult": -0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "intellect_good_1",
+      "name": "Quick",
+      "category": "congenital",
+      "cost": 80,
+      "opposites": [
+        "dull",
+        "intellect_bad",
+        "intellect_good_2",
+        "#To",
+        "prevent",
+        "multiple",
+        "tiers",
+        "of",
+        "the",
+        "same",
+        "congenital",
+        "trait",
+        "intellect_good_3"
+      ],
+      "group": "intellect_good",
+      "level": 1,
+      "modifiers": {
+        "diplomacy": 1,
+        "martial": 1,
+        "stewardship": 1,
+        "intrigue": 1,
+        "learning": 1,
+        "monthly_lifestyle_xp_gain_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "intellect_good_2",
+      "name": "Intelligent",
+      "category": "congenital",
+      "cost": 160,
+      "opposites": [
+        "dull",
+        "intellect_bad",
+        "intellect_good_3",
+        "#To",
+        "prevent",
+        "multiple",
+        "tiers",
+        "of",
+        "the",
+        "same",
+        "congenital",
+        "trait",
+        "intellect_good_1"
+      ],
+      "group": "intellect_good",
+      "level": 2,
+      "modifiers": {
+        "diplomacy": 3,
+        "martial": 3,
+        "stewardship": 3,
+        "intrigue": 3,
+        "learning": 3,
+        "monthly_lifestyle_xp_gain_mult": 0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "intellect_good_3",
+      "name": "Genius",
+      "category": "congenital",
+      "cost": 240,
+      "opposites": [
+        "dull",
+        "intellect_bad",
+        "intellect_good_2",
+        "#To",
+        "prevent",
+        "multiple",
+        "tiers",
+        "of",
+        "the",
+        "same",
+        "congenital",
+        "trait",
+        "intellect_good_1"
+      ],
+      "group": "intellect_good",
+      "level": 3,
+      "modifiers": {
+        "diplomacy": 5,
+        "martial": 5,
+        "stewardship": 5,
+        "intrigue": 5,
+        "learning": 5,
+        "monthly_lifestyle_xp_gain_mult": 0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "physique_bad_1",
+      "name": "Delicate",
+      "category": "congenital",
+      "cost": -15,
+      "opposites": [
+        "strong",
+        "physique_good",
+        "physique_bad_2",
+        "physique_bad_3"
+      ],
+      "group": "physique_bad",
+      "level": 1,
+      "modifiers": {
+        "prowess": -2,
+        "health": -0.25
+      },
+      "dlc": null
+    },
+    {
+      "id": "physique_bad_2",
+      "name": "Frail",
+      "category": "congenital",
+      "cost": -30,
+      "opposites": [
+        "strong",
+        "physique_good",
+        "physique_bad_3",
+        "physique_bad_1"
+      ],
+      "group": "physique_bad",
+      "level": 2,
+      "modifiers": {
+        "prowess": -4,
+        "health": -0.5,
+        "attraction_opinion": -5
+      },
+      "dlc": null
+    },
+    {
+      "id": "physique_bad_3",
+      "name": "Feeble",
+      "category": "congenital",
+      "cost": -45,
+      "opposites": [
+        "strong",
+        "physique_good",
+        "physique_bad_2",
+        "physique_bad_1"
+      ],
+      "group": "physique_bad",
+      "level": 3,
+      "modifiers": {
+        "prowess": -6,
+        "health": -1,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "physique_good_1",
+      "name": "Hale",
+      "category": "congenital",
+      "cost": 60,
+      "opposites": [
+        "weak",
+        "spindly",
+        "physique_bad",
+        "physique_good_2",
+        "physique_good_3"
+      ],
+      "group": "physique_good",
+      "level": 1,
+      "modifiers": {
+        "prowess": 2,
+        "health": 0.25,
+        "attraction_opinion": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "physique_good_2",
+      "name": "Robust",
+      "category": "congenital",
+      "cost": 120,
+      "opposites": [
+        "weak",
+        "spindly",
+        "physique_bad",
+        "physique_good_1",
+        "physique_good_3"
+      ],
+      "group": "physique_good",
+      "level": 2,
+      "modifiers": {
+        "prowess": 4,
+        "health": 0.5,
+        "attraction_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "physique_good_3",
+      "name": "Divine",
+      "category": "congenital",
+      "cost": 180,
+      "opposites": [
+        "weak",
+        "spindly",
+        "physique_bad",
+        "physique_good_1",
+        "physique_good_2"
+      ],
+      "group": "physique_good",
+      "level": 3,
+      "modifiers": {
+        "prowess": 8,
+        "health": 1,
+        "attraction_opinion": 15
+      },
+      "dlc": null
+    },
+    {
+      "id": "pure_blooded",
+      "name": "Pure-blooded",
+      "category": "other",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": 0.1,
+        "health": 0.25,
+        "inbreeding_chance": -0.5,
+        "inherit_chance": 15,
+        "both_parent_has_trait_inherit_chance": 75
+      },
+      "dlc": null
+    },
+    {
+      "id": "fecund",
+      "name": "Fecund",
+      "category": "congenital",
+      "cost": 50,
+      "opposites": [
+        "infertile"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": 0.5,
+        "life_expectancy": 5,
+        "years_of_fertility": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "strong",
+      "name": "Strong",
+      "category": "other",
+      "cost": 50,
+      "opposites": [
+        "weak",
+        "physique_bad"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": 4,
+        "health": 0.5
+      },
+      "dlc": null
+    },
+    {
+      "id": "shrewd",
+      "name": "Shrewd",
+      "category": "other",
+      "cost": 50,
+      "opposites": [
+        "intellect_bad",
+        "dull"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "martial": 2,
+        "stewardship": 2,
+        "intrigue": 2,
+        "learning": 2
+      },
+      "dlc": null
+    },
+    {
+      "id": "clubfooted",
+      "name": "Club-footed",
+      "category": "congenital",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": -2,
+        "attraction_opinion": -10,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "hunchbacked",
+      "name": "Hunchbacked",
+      "category": "congenital",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": -2,
+        "attraction_opinion": -30,
+        "same_opinion": 10,
+        "vassal_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "lisping",
+      "name": "Lisping",
+      "category": "congenital",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "stuttering",
+      "name": "Stuttering",
+      "category": "congenital",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "dwarf",
+      "name": "Dwarf",
+      "category": "congenital",
+      "cost": 0,
+      "opposites": [
+        "giant"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": -4,
+        "attraction_opinion": -20,
+        "same_opinion": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "giant",
+      "name": "Giant",
+      "category": "congenital",
+      "cost": 20,
+      "opposites": [
+        "dwarf"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": 6,
+        "health": -0.25,
+        "attraction_opinion": -5,
+        "tribal_government_opinion": 10,
+        "glory_hound_opinion": 10,
+        "same_opinion": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "inbred",
+      "name": "Inbred",
+      "category": "other",
+      "cost": -30,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -5,
+        "martial": -5,
+        "stewardship": -5,
+        "intrigue": -5,
+        "learning": -5,
+        "prowess": -2,
+        "fertility": -0.5,
+        "health": -1.5,
+        "inherit_chance": 15,
+        "attraction_opinion": -30,
+        "vassal_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "weak",
+      "name": "Weak",
+      "category": "other",
+      "cost": -10,
+      "opposites": [
+        "strong",
+        "physique_good"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": -2,
+        "health": -0.5,
+        "attraction_opinion": -10,
+        "vassal_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "dull",
+      "name": "Dull",
+      "category": "other",
+      "cost": -20,
+      "opposites": [
+        "intellect_good",
+        "shrewd"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "martial": -2,
+        "stewardship": -2,
+        "intrigue": -2,
+        "learning": -2
+      },
+      "dlc": null
+    },
+    {
+      "id": "spindly",
+      "name": "Spindly",
+      "category": "congenital",
+      "cost": -10,
+      "opposites": [
+        "physique_good"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": -1,
+        "health": -0.25,
+        "attraction_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "scaly",
+      "name": "Scaly",
+      "category": "congenital",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": -0.2,
+        "attraction_opinion": -30,
+        "vassal_opinion": -10,
+        "same_opinion": 10,
+        "dread_baseline_add": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "albino",
+      "name": "Albino",
+      "category": "congenital",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "general_opinion": -10,
+        "same_opinion": 10,
+        "dread_baseline_add": 15
+      },
+      "dlc": null
+    },
+    {
+      "id": "wheezing",
+      "name": "Wheezing",
+      "category": "congenital",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": -0.15,
+        "vassal_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "bleeder",
+      "name": "Bleeder",
+      "category": "congenital",
+      "cost": -20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "health": -1.5,
+        "vassal_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "infertile",
+      "name": "Infertile",
+      "category": "congenital",
+      "cost": 0,
+      "opposites": [
+        "fecund"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "fertility": -0.5
+      },
+      "dlc": null
+    },
+    {
+      "id": "pilgrim",
+      "name": "Pilgrim",
+      "category": "fame",
+      "cost": 30,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "character_travel_speed": 5,
+        "character_travel_safety": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "hajjaj",
+      "name": "hajjaj",
+      "category": "fame",
+      "cost": 30,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "islam_religion_opinion": 5,
+        "character_travel_speed": 5,
+        "character_travel_safety": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "sayyid",
+      "name": "Sayyid",
+      "category": "fame",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "islam_religion_opinion": 5,
+        "inherit_chance": 100
+      },
+      "dlc": null
+    },
+    {
+      "id": "faith_warrior",
+      "name": "Warrior of the Faith",
+      "category": "fame",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 2,
+        "prowess": 3,
+        "clergy_opinion": 15,
+        "same_faith_opinion": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "berserker",
+      "name": "Berserker",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -2,
+        "martial": 2,
+        "prowess": 5,
+        "dread_baseline_add": 15,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "shieldmaiden",
+      "name": "shieldmaiden",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 3,
+        "prowess": 3,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "varangian",
+      "name": "Varangian",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 1,
+        "martial": 2,
+        "prowess": 2,
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_poet",
+      "name": "Poet",
+      "category": "lifestyle",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy_per_prestige_level": 1,
+        "stress_loss_mult": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "bastard",
+      "name": "Bastard",
+      "category": "fame",
+      "cost": 0,
+      "opposites": [
+        "legitimized_bastard",
+        "child_of_concubine",
+        "wild_oat",
+        "disputed_heritage"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "same_opinion": 5,
+        "dynasty_opinion": -15,
+        "legitimacy_gain_mult": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "legitimized_bastard",
+      "name": "Legitimized Bastard",
+      "category": "fame",
+      "cost": 0,
+      "opposites": [
+        "bastard",
+        "child_of_concubine",
+        "wild_oat",
+        "disputed_heritage"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "legitimacy_gain_mult": -0.05,
+        "dynasty_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "wild_oat",
+      "name": "Wild Oat",
+      "category": "fame",
+      "cost": 0,
+      "opposites": [
+        "bastard",
+        "legitimized_bastard",
+        "child_of_concubine"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1
+      },
+      "dlc": null
+    },
+    {
+      "id": "deviant",
+      "name": "Deviant",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stress_loss_mult": 0.25,
+        "same_opinion": 35
+      },
+      "dlc": null
+    },
+    {
+      "id": "cannibal",
+      "name": "Cannibal",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "prowess": 2,
+        "same_opinion": 35,
+        "stress_loss_mult": 0.15,
+        "dread_baseline_add": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "incestuous",
+      "name": "Incestuous",
+      "category": "fame",
+      "cost": 0,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "same_opinion": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "adulterer",
+      "name": "Adulterer",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "fornicator",
+      "name": "Fornicator",
+      "category": "fame",
+      "cost": -5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "same_opinion": 10
+      },
+      "dlc": null
+    },
+    {
+      "id": "murderer",
+      "name": "Murderer",
+      "category": "fame",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "general_opinion": -15
+      },
+      "dlc": null
+    },
+    {
+      "id": "born_in_the_purple",
+      "name": "Born in the Purple",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_prestige": 0.1,
+        "short_reign_duration_mult": -0.25,
+        "monthly_influence": 0.75
+      },
+      "dlc": null
+    },
+    {
+      "id": "viking",
+      "name": "viking",
+      "category": "fame",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 2,
+        "prowess": 3,
+        "monthly_prestige": 0.3,
+        "same_opinion": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "adventurer",
+      "name": "Veteran Adventurer",
+      "category": "fame",
+      "cost": 50,
+      "opposites": [
+        "adventurer_follower"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "general_opinion": -10,
+        "martial_per_prestige_level": 1,
+        "prowess_per_prestige_level": 1,
+        "men_at_arms_maintenance": -0.5,
+        "same_opinion": 20,
+        "opposite_opinion": 20
+      },
+      "dlc": "Roads to Power"
+    },
+    {
+      "id": "adventurer_follower",
+      "name": "Follower",
+      "category": "fame",
+      "cost": 10,
+      "opposites": [
+        "adventurer"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 1,
+        "same_opinion": 20,
+        "opposite_opinion": 20
+      },
+      "dlc": "Roads to Power"
+    },
+    {
+      "id": "heresiarch",
+      "name": "Heresiarch",
+      "category": "fame",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 2,
+        "learning": 2,
+        "prowess": 2,
+        "same_faith_opinion": 10,
+        "monthly_influence": 0.75,
+        "advantage_against_coreligionists": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "peasant_leader",
+      "name": "Peasant Leader",
+      "category": "fame",
+      "cost": 100,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "same_opinion": 25,
+        "general_opinion": -10,
+        "county_opinion_add": 10,
+        "army_maintenance_mult": -0.5
+      },
+      "dlc": "Roads to Power"
+    },
+    {
+      "id": "populist_leader",
+      "name": "populist_leader",
+      "category": "fame",
+      "cost": 150,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "county_opinion_add": 15,
+        "courtly_opinion": -30,
+        "parochial_same_faith_opinion": 10,
+        "parochial_same_culture_opinion": 10,
+        "army_maintenance_mult": -0.5
+      },
+      "dlc": "Roads to Power"
+    },
+    {
+      "id": "witch",
+      "name": "Witch",
+      "category": "fame",
+      "cost": 10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "intrigue": 1,
+        "learning": 1,
+        "same_opinion": 20
+      },
+      "dlc": null
+    },
+    {
+      "id": "loyal",
+      "name": "Loyal",
+      "category": "fame",
+      "cost": 20,
+      "opposites": [
+        "disloyal"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "liege_opinion": 15,
+        "diplomacy": 1,
+        "intrigue": -1,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "disloyal",
+      "name": "Disloyal",
+      "category": "fame",
+      "cost": -20,
+      "opposites": [
+        "loyal"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": -1,
+        "intrigue": 1,
+        "liege_opinion": -15,
+        "same_opinion": 10,
+        "opposite_opinion": -10
+      },
+      "dlc": null
+    },
+    {
+      "id": "logistician",
+      "name": "Logistician",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "supply_duration": 0.4,
+        "character_travel_safety": 4
+      },
+      "dlc": null
+    },
+    {
+      "id": "military_engineer",
+      "name": "Military Engineer",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "siege_phase_time": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "aggressive_attacker",
+      "name": "Aggressive Attacker",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "enemy_hard_casualty_modifier": 0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "unyielding_defender",
+      "name": "Defender",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "hard_casualty_modifier": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "forder",
+      "name": "Forder",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "character_travel_speed": 5
+      },
+      "dlc": null
+    },
+    {
+      "id": "flexible_leader",
+      "name": "Flexible Leader",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "enemy_terrain_advantage": -0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "desert_warrior",
+      "name": "Desert Warrior",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "drylands_advantage": 2,
+        "desert_advantage": 2,
+        "desert_mountains_advantage": 2,
+        "oasis_advantage": 2
+      },
+      "dlc": null
+    },
+    {
+      "id": "jungle_stalker",
+      "name": "Jungle Stalker",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "jungle_advantage": 2,
+        "jungle_attrition_mult": -0.2
+      },
+      "dlc": null
+    },
+    {
+      "id": "reaver",
+      "name": "Pillager",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "raid_speed": 0.4,
+        "hostile_county_attrition": -0.3
+      },
+      "dlc": null
+    },
+    {
+      "id": "reckless",
+      "name": "Reckless",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [
+        "cautious_leader"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "min_combat_roll": -2,
+        "max_combat_roll": 3
+      },
+      "dlc": null
+    },
+    {
+      "id": "holy_warrior",
+      "name": "Faithful Blade",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "tolerance_advantage_mod": 4
+      },
+      "dlc": null
+    },
+    {
+      "id": "open_terrain_expert",
+      "name": "Open Terrain Expert",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "farmlands_advantage": 2,
+        "plains_advantage": 2,
+        "steppe_advantage": 2
+      },
+      "dlc": null
+    },
+    {
+      "id": "rough_terrain_expert",
+      "name": "Rough Terrain Expert",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "hills_advantage": 2,
+        "mountains_advantage": 2,
+        "wetlands_advantage": 2
+      },
+      "dlc": null
+    },
+    {
+      "id": "forest_fighter",
+      "name": "Forest Fighter",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "forest_advantage": 2,
+        "taiga_advantage": 2
+      },
+      "dlc": null
+    },
+    {
+      "id": "cautious_leader",
+      "name": "Cautious Leader",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [
+        "reckless"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "min_combat_roll": 2,
+        "max_combat_roll": -1
+      },
+      "dlc": null
+    },
+    {
+      "id": "organizer",
+      "name": "Organizer",
+      "category": "commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "movement_speed": 0.1,
+        "retreat_losses": -0.1
+      },
+      "dlc": null
+    },
+    {
+      "id": "winter_soldier",
+      "name": "Winter Soldier",
+      "category": "winter_commander",
+      "cost": 25,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "winter_movement_speed": 0.1,
+        "winter_advantage": 3
+      },
+      "dlc": null
+    },
+    {
+      "id": "crusader_king",
+      "name": "Crusader King",
+      "category": "fame",
+      "cost": 120,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "martial": 3,
+        "prowess": 2,
+        "same_opinion_if_same_faith": 10,
+        "same_faith_opinion": 15,
+        "monthly_county_control_growth_add": 0.5,
+        "tolerance_advantage_mod": 5,
+        "hard_casualty_modifier": -0.15,
+        "retreat_losses": -0.2,
+        "county_opinion_add": 35
+      },
+      "dlc": null
+    },
+    {
+      "id": "tourney_participant",
+      "name": "Hastiluder",
+      "category": "other",
+      "cost": 5,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "same_opinion": 10,
+        "belligerent_opinion": 10
+      },
+      "dlc": "Tours and Tournaments"
+    },
+    {
+      "id": "lifestyle_traveler",
+      "name": "lifestyle_traveler",
+      "category": "lifestyle",
+      "cost": 20,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_wanderer_lifestyle_xp_gain_mult": 0.1,
+        "same_opinion": 5,
+        "diplomacy": 1
+      },
+      "dlc": "Tours and Tournaments"
+    },
+    {
+      "id": "governor",
+      "name": "Governor",
+      "category": "fame",
+      "cost": 40,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {},
+      "dlc": "All Under Heaven"
+    },
+    {
+      "id": "knight_errant",
+      "name": "Knight-Errant",
+      "category": "fame",
+      "cost": 75,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "knight_limit": 2,
+        "knight_effectiveness_per_prowess": 0.01,
+        "glory_hound_opinion": 15
+      },
+      "dlc": "Roads to Power"
+    },
+    {
+      "id": "immortal",
+      "name": "Immortal",
+      "category": "other",
+      "cost": 10000,
+      "opposites": [
+        "incapable"
+      ],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "long_reign_bonus_mult": -1000
+      },
+      "dlc": null
+    },
+    {
+      "id": "lifestyle_wayfarer",
+      "name": "Wayfarer",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "diplomacy": 2,
+        "prowess_per_prestige_level": 1,
+        "stress_loss_per_prestige_level": 0.05
+      },
+      "dlc": "Wandering Nobles"
+    },
+    {
+      "id": "lifestyle_voyager",
+      "name": "Voyager",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "character_travel_speed": 10,
+        "monthly_prestige": 0.25,
+        "diplomatic_range_mult": 0.15
+      },
+      "dlc": "Wandering Nobles"
+    },
+    {
+      "id": "lifestyle_surveyor",
+      "name": "Inspector",
+      "category": "lifestyle",
+      "cost": 50,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "stewardship": 2,
+        "development_growth_factor": 0.1,
+        "long_reign_bonus_mult": 0.25,
+        "character_travel_safety": 10
+      },
+      "dlc": "Wandering Nobles"
+    },
+    {
+      "id": "confucian_education",
+      "name": "Confucian Education",
+      "category": "fame",
+      "cost": 15,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "learning": 1,
+        "same_opinion": 10
+      },
+      "dlc": "All Under Heaven"
+    },
+    {
+      "id": "burdened",
+      "name": "Burdened",
+      "category": "fame",
+      "cost": -10,
+      "opposites": [],
+      "group": null,
+      "level": null,
+      "modifiers": {
+        "monthly_merit_mult": -0.3,
+        "governor_xp_gain_mult": -0.3,
+        "learning": -2,
+        "stress_loss_mult": 0.2
+      },
+      "dlc": null
+    }
+  ],
+  "cultures": [
+    {
+      "id": "akan",
+      "name": "Akan",
+      "heritage": "heritage_akan"
+    },
+    {
+      "id": "kru",
+      "name": "Kru",
+      "heritage": "heritage_akan"
+    },
+    {
+      "id": "guan",
+      "name": "Guan",
+      "heritage": "heritage_akan"
+    },
+    {
+      "id": "nivkh",
+      "name": "Nivkh",
+      "heritage": "heritage_nivkh"
+    },
+    {
+      "id": "bedouin",
+      "name": "Bedouin",
+      "heritage": "heritage_arabic"
+    },
+    {
+      "id": "levantine",
+      "name": "Mashriqi",
+      "heritage": "heritage_arabic"
+    },
+    {
+      "id": "egyptian",
+      "name": "Egyptian",
+      "heritage": "heritage_arabic"
+    },
+    {
+      "id": "maghrebi",
+      "name": "Maghrebi",
+      "heritage": "heritage_arabic"
+    },
+    {
+      "id": "yemeni",
+      "name": "Yemeni",
+      "heritage": "heritage_arabic"
+    },
+    {
+      "id": "latgalian",
+      "name": "Latgalian",
+      "heritage": "heritage_baltic"
+    },
+    {
+      "id": "lithuanian",
+      "name": "Lithuanian",
+      "heritage": "heritage_baltic"
+    },
+    {
+      "id": "prussian",
+      "name": "Prussian",
+      "heritage": "heritage_baltic"
+    },
+    {
+      "id": "finnish",
+      "name": "Finnish",
+      "heritage": "heritage_balto_finnic"
+    },
+    {
+      "id": "sami",
+      "name": "Sami",
+      "heritage": "heritage_balto_finnic"
+    },
+    {
+      "id": "estonian",
+      "name": "Estonian",
+      "heritage": "heritage_balto_finnic"
+    },
+    {
+      "id": "karelian",
+      "name": "Karelian",
+      "heritage": "heritage_balto_finnic"
+    },
+    {
+      "id": "vepsian",
+      "name": "Vepsian",
+      "heritage": "heritage_balto_finnic"
+    },
+    {
+      "id": "east_bantu",
+      "name": "East Bantu",
+      "heritage": "heritage_bantu"
+    },
+    {
+      "id": "swahili",
+      "name": "Swahili",
+      "heritage": "heritage_bantu"
+    },
+    {
+      "id": "butr",
+      "name": "Butr",
+      "heritage": "heritage_berber"
+    },
+    {
+      "id": "baranis",
+      "name": "Baranis",
+      "heritage": "heritage_berber"
+    },
+    {
+      "id": "guanches",
+      "name": "Guanche",
+      "heritage": "heritage_berber"
+    },
+    {
+      "id": "zaghawa",
+      "name": "Zaghawa",
+      "heritage": "heritage_berber"
+    },
+    {
+      "id": "pictish",
+      "name": "Pictish",
+      "heritage": "heritage_brythonic"
+    },
+    {
+      "id": "welsh",
+      "name": "Welsh",
+      "heritage": "heritage_brythonic"
+    },
+    {
+      "id": "breton",
+      "name": "Breton",
+      "heritage": "heritage_brythonic"
+    },
+    {
+      "id": "cornish",
+      "name": "Cornish",
+      "heritage": "heritage_brythonic"
+    },
+    {
+      "id": "cumbrian",
+      "name": "Cumbrian",
+      "heritage": "heritage_brythonic"
+    },
+    {
+      "id": "burmese",
+      "name": "Burmese",
+      "heritage": "heritage_burman"
+    },
+    {
+      "id": "karen",
+      "name": "Karen",
+      "heritage": "heritage_burman"
+    },
+    {
+      "id": "kachin",
+      "name": "Kachin",
+      "heritage": "heritage_burman"
+    },
+    {
+      "id": "greek",
+      "name": "Greek",
+      "heritage": "heritage_byzantine"
+    },
+    {
+      "id": "armenian",
+      "name": "Armenian",
+      "heritage": "heritage_caucasian"
+    },
+    {
+      "id": "georgian",
+      "name": "Georgian",
+      "heritage": "heritage_caucasian"
+    },
+    {
+      "id": "kanuri",
+      "name": "Kanuri",
+      "heritage": "heritage_central_african"
+    },
+    {
+      "id": "hausa",
+      "name": "Hausa",
+      "heritage": "heritage_central_african"
+    },
+    {
+      "id": "sao",
+      "name": "Sao",
+      "heritage": "heritage_central_african"
+    },
+    {
+      "id": "nupe",
+      "name": "Nupe",
+      "heritage": "heritage_central_african"
+    },
+    {
+      "id": "saxon",
+      "name": "Saxon",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "franconian",
+      "name": "Franconian",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "swabian",
+      "name": "Swabian",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "bavarian",
+      "name": "Bavarian",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "frisian",
+      "name": "Frisian",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "dutch",
+      "name": "Dutch",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "german",
+      "name": "German",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "cham",
+      "name": "Cham",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "acehnese",
+      "name": "Acehnese",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "han",
+      "name": "Han",
+      "heritage": "heritage_chinese"
+    },
+    {
+      "id": "hlai",
+      "name": "Hlai",
+      "heritage": "heritage_tai"
+    },
+    {
+      "id": "yi",
+      "name": "Yi",
+      "heritage": "heritage_chinese"
+    },
+    {
+      "id": "bai",
+      "name": "Bai",
+      "heritage": "heritage_chinese"
+    },
+    {
+      "id": "gothic",
+      "name": "Gothic",
+      "heritage": "heritage_gothic"
+    },
+    {
+      "id": "ancient_egyptian",
+      "name": "Ancient Egyptian",
+      "heritage": "heritage_egyptian"
+    },
+    {
+      "id": "hebrew",
+      "name": "Hebrew",
+      "heritage": "heritage_israelite"
+    },
+    {
+      "id": "hunnic",
+      "name": "Hunnic",
+      "heritage": "heritage_hunnic"
+    },
+    {
+      "id": "trojan",
+      "name": "Trojan",
+      "heritage": "heritage_ancient_greek"
+    },
+    {
+      "id": "macedonian",
+      "name": "Macedonian",
+      "heritage": "heritage_ancient_greek"
+    },
+    {
+      "id": "carthaginian",
+      "name": "Carthaginian",
+      "heritage": "heritage_phoenician"
+    },
+    {
+      "id": "tamil",
+      "name": "Tamil",
+      "heritage": "heritage_dravidian"
+    },
+    {
+      "id": "telugu",
+      "name": "Telugu",
+      "heritage": "heritage_dravidian"
+    },
+    {
+      "id": "kannada",
+      "name": "Kannada",
+      "heritage": "heritage_dravidian"
+    },
+    {
+      "id": "gond",
+      "name": "Gond",
+      "heritage": "heritage_dravidian"
+    },
+    {
+      "id": "ethiopian",
+      "name": "Ethiopian",
+      "heritage": "heritage_east_african"
+    },
+    {
+      "id": "nubian",
+      "name": "Nubian",
+      "heritage": "heritage_east_african"
+    },
+    {
+      "id": "welayta",
+      "name": "Welayta",
+      "heritage": "heritage_east_african"
+    },
+    {
+      "id": "daju",
+      "name": "Daju",
+      "heritage": "heritage_east_african"
+    },
+    {
+      "id": "beja",
+      "name": "Beja",
+      "heritage": "heritage_east_african"
+    },
+    {
+      "id": "russian",
+      "name": "Russian",
+      "heritage": "heritage_east_slavic"
+    },
+    {
+      "id": "ilmenian",
+      "name": "Ilmenian",
+      "heritage": "heritage_east_slavic"
+    },
+    {
+      "id": "severian",
+      "name": "Severian",
+      "heritage": "heritage_east_slavic"
+    },
+    {
+      "id": "volhynian",
+      "name": "Volhynian",
+      "heritage": "heritage_east_slavic"
+    },
+    {
+      "id": "frankish",
+      "name": "Frankish",
+      "heritage": "heritage_frankish"
+    },
+    {
+      "id": "french",
+      "name": "French",
+      "heritage": "heritage_frankish"
+    },
+    {
+      "id": "norman",
+      "name": "Norman",
+      "heritage": "heritage_frankish"
+    },
+    {
+      "id": "occitan",
+      "name": "Occitan",
+      "heritage": "heritage_frankish"
+    },
+    {
+      "id": "irish",
+      "name": "Irish",
+      "heritage": "heritage_goidelic"
+    },
+    {
+      "id": "gaelic",
+      "name": "Gaelic",
+      "heritage": "heritage_goidelic"
+    },
+    {
+      "id": "hmong",
+      "name": "Hmong",
+      "heritage": "heritage_hmongic"
+    },
+    {
+      "id": "yao",
+      "name": "Yao",
+      "heritage": "heritage_hmongic"
+    },
+    {
+      "id": "andalusian",
+      "name": "Andalusian",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "basque",
+      "name": "Basque",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "castilian",
+      "name": "Castilian",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "catalan",
+      "name": "Catalan",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "portuguese",
+      "name": "Portuguese",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "visigothic",
+      "name": "Visigothic",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "galician",
+      "name": "Galician",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "asturleonese",
+      "name": "Asturleonese",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "aragonese",
+      "name": "Aragonese",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "suebi",
+      "name": "Suebi",
+      "heritage": "heritage_iberian"
+    },
+    {
+      "id": "bengali",
+      "name": "Bengali",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "oriya",
+      "name": "Oriya",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "assamese",
+      "name": "Kamrupi",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "hindustani",
+      "name": "Kannauji",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "gujarati",
+      "name": "Gujarati",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "punjabi",
+      "name": "Punjabi",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "rajput",
+      "name": "Rajasthani",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "malvi",
+      "name": "Malvi",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "sindhi",
+      "name": "Sindhi",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "marathi",
+      "name": "Marathi",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "kashmiri",
+      "name": "Kashmiri",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "sinhala",
+      "name": "Sinhala",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "nepali",
+      "name": "Nepali",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "brahui",
+      "name": "Brahui",
+      "heritage": "heritage_indo_aryan"
+    },
+    {
+      "id": "persian",
+      "name": "Persian",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "kurdish",
+      "name": "Kurdish",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "baloch",
+      "name": "Baloch",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "daylamite",
+      "name": "Daylamite",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "tajik",
+      "name": "Tajik",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "afghan",
+      "name": "Afghan",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "saka",
+      "name": "Saka",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "sogdian",
+      "name": "Sogdian",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "khwarezmian",
+      "name": "Khwarezmian",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "tocharian",
+      "name": "Tocharian",
+      "heritage": "heritage_tocharian"
+    },
+    {
+      "id": "alan",
+      "name": "Alan",
+      "heritage": "heritage_iranian"
+    },
+    {
+      "id": "ashkenazi",
+      "name": "Ashkenazi",
+      "heritage": "heritage_israelite"
+    },
+    {
+      "id": "sephardi",
+      "name": "Sephardi",
+      "heritage": "heritage_israelite"
+    },
+    {
+      "id": "radhanite",
+      "name": "Radhanite",
+      "heritage": "heritage_israelite"
+    },
+    {
+      "id": "kochinim",
+      "name": "Kochini",
+      "heritage": "heritage_israelite"
+    },
+    {
+      "id": "bavlim",
+      "name": "Bavli",
+      "heritage": "heritage_israelite"
+    },
+    {
+      "id": "japanese",
+      "name": "Yamato",
+      "heritage": "heritage_japonic"
+    },
+    {
+      "id": "emishi",
+      "name": "Emishi",
+      "heritage": "heritage_ainuic"
+    },
+    {
+      "id": "ainu",
+      "name": "Ainu",
+      "heritage": "heritage_ainuic"
+    },
+    {
+      "id": "ryukyuan",
+      "name": "Ryukyuan",
+      "heritage": "heritage_japonic"
+    },
+    {
+      "id": "khmer",
+      "name": "Khmer",
+      "heritage": "heritage_mon_khmer"
+    },
+    {
+      "id": "khmu",
+      "name": "Khmu",
+      "heritage": "heritage_mon_khmer"
+    },
+    {
+      "id": "mon",
+      "name": "Mon",
+      "heritage": "heritage_mon_khmer"
+    },
+    {
+      "id": "goryeo",
+      "name": "Goryeo",
+      "heritage": "heritage_korean"
+    },
+    {
+      "id": "silla",
+      "name": "Silla",
+      "heritage": "heritage_korean"
+    },
+    {
+      "id": "baekje",
+      "name": "Baekje",
+      "heritage": "heritage_buyeo"
+    },
+    {
+      "id": "goguryeo",
+      "name": "Goguryeo",
+      "heritage": "heritage_buyeo"
+    },
+    {
+      "id": "balhae",
+      "name": "Balhae",
+      "heritage": "heritage_buyeo"
+    },
+    {
+      "id": "italian",
+      "name": "Italian",
+      "heritage": "heritage_latin"
+    },
+    {
+      "id": "roman",
+      "name": "Roman",
+      "heritage": "heritage_latin"
+    },
+    {
+      "id": "cisalpine",
+      "name": "Cisalpine",
+      "heritage": "heritage_latin"
+    },
+    {
+      "id": "sardinian",
+      "name": "Sardinian",
+      "heritage": "heritage_latin"
+    },
+    {
+      "id": "sicilian",
+      "name": "Sicilian",
+      "heritage": "heritage_latin"
+    },
+    {
+      "id": "lombard",
+      "name": "Lombard",
+      "heritage": "heritage_latin"
+    },
+    {
+      "id": "langobard",
+      "name": "Langobard",
+      "heritage": "heritage_central_germanic"
+    },
+    {
+      "id": "mogyer",
+      "name": "Mogyër",
+      "heritage": "heritage_magyar"
+    },
+    {
+      "id": "hungarian",
+      "name": "Hungarian",
+      "heritage": "heritage_magyar"
+    },
+    {
+      "id": "javanese",
+      "name": "Javanese",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "malay",
+      "name": "Malay",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "senoi",
+      "name": "Senoi",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "dayak",
+      "name": "Dayak",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "bisayan",
+      "name": "Bisayan",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "tagalog",
+      "name": "Tagalog",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "iloko",
+      "name": "Iloko",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "bugis",
+      "name": "Bugis",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "toraja",
+      "name": "Toraja",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "maluku",
+      "name": "Moluccan",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "papuan",
+      "name": "Papuan",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "amis",
+      "name": "Amis",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "mongol",
+      "name": "Mongol",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "buryat",
+      "name": "Buryat",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "oirat",
+      "name": "Oirat",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "naiman",
+      "name": "Naiman",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "kerait",
+      "name": "Kerait",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "khitan",
+      "name": "Khitan",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "shiwei",
+      "name": "Shiwei",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "tuyuhun",
+      "name": "Tuyuhun",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "nakkavaram",
+      "name": "Nakkavaram",
+      "heritage": "heritage_austronesian"
+    },
+    {
+      "id": "norse",
+      "name": "Norse",
+      "heritage": "heritage_north_germanic"
+    },
+    {
+      "id": "swedish",
+      "name": "Swedish",
+      "heritage": "heritage_north_germanic"
+    },
+    {
+      "id": "norwegian",
+      "name": "Norwegian",
+      "heritage": "heritage_north_germanic"
+    },
+    {
+      "id": "danish",
+      "name": "Danish",
+      "heritage": "heritage_north_germanic"
+    },
+    {
+      "id": "tangut",
+      "name": "Tangut",
+      "heritage": "heritage_qiangic"
+    },
+    {
+      "id": "qiang",
+      "name": "Qiang",
+      "heritage": "heritage_qiangic"
+    },
+    {
+      "id": "soninke",
+      "name": "Soninke",
+      "heritage": "heritage_sahelian"
+    },
+    {
+      "id": "bozo",
+      "name": "Bozo",
+      "heritage": "heritage_sahelian"
+    },
+    {
+      "id": "mossi",
+      "name": "Mossi",
+      "heritage": "heritage_sahelian"
+    },
+    {
+      "id": "sorko",
+      "name": "Sorko",
+      "heritage": "heritage_sahelian"
+    },
+    {
+      "id": "gaw",
+      "name": "Gaw",
+      "heritage": "heritage_sahelian"
+    },
+    {
+      "id": "songhai",
+      "name": "Songhai",
+      "heritage": "heritage_sahelian"
+    },
+    {
+      "id": "pulaar",
+      "name": "Pulaar",
+      "heritage": "heritage_senegambian"
+    },
+    {
+      "id": "serer",
+      "name": "Serer",
+      "heritage": "heritage_senegambian"
+    },
+    {
+      "id": "wolof",
+      "name": "Wolof",
+      "heritage": "heritage_senegambian"
+    },
+    {
+      "id": "somali",
+      "name": "Somali",
+      "heritage": "heritage_somalian"
+    },
+    {
+      "id": "afar",
+      "name": "Afar",
+      "heritage": "heritage_somalian"
+    },
+    {
+      "id": "croatian",
+      "name": "Croatian",
+      "heritage": "heritage_south_slavic"
+    },
+    {
+      "id": "bosnian",
+      "name": "Bosnian",
+      "heritage": "heritage_south_slavic"
+    },
+    {
+      "id": "serbian",
+      "name": "Serbian",
+      "heritage": "heritage_south_slavic"
+    },
+    {
+      "id": "bulgarian",
+      "name": "Bulgarian",
+      "heritage": "heritage_south_slavic"
+    },
+    {
+      "id": "albanian",
+      "name": "Albanian",
+      "heritage": "heritage_albanian"
+    },
+    {
+      "id": "assyrian",
+      "name": "Syriac",
+      "heritage": "heritage_syriac"
+    },
+    {
+      "id": "tai",
+      "name": "Tai",
+      "heritage": "heritage_tai"
+    },
+    {
+      "id": "bouxcuengh",
+      "name": "Bouxcuengh",
+      "heritage": "heritage_tai"
+    },
+    {
+      "id": "bodpa",
+      "name": "Bodpa",
+      "heritage": "heritage_tibetan"
+    },
+    {
+      "id": "zhangzhung",
+      "name": "Zhangzhung",
+      "heritage": "heritage_tibetan"
+    },
+    {
+      "id": "sumpa",
+      "name": "Sumpa",
+      "heritage": "heritage_tibetan"
+    },
+    {
+      "id": "tsangpa",
+      "name": "Tsangpa",
+      "heritage": "heritage_tibetan"
+    },
+    {
+      "id": "kirati",
+      "name": "Kirati",
+      "heritage": "heritage_tibetan"
+    },
+    {
+      "id": "lhomon",
+      "name": "Lhomon",
+      "heritage": "heritage_tibetan"
+    },
+    {
+      "id": "tujia",
+      "name": "Tujia",
+      "heritage": "heritage_tai"
+    },
+    {
+      "id": "jurchen",
+      "name": "Jurchen",
+      "heritage": "heritage_tungusic"
+    },
+    {
+      "id": "mohe",
+      "name": "Mohe",
+      "heritage": "heritage_tungusic"
+    },
+    {
+      "id": "turkish",
+      "name": "Oghuz",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "pecheneg",
+      "name": "Pecheneg",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "cuman",
+      "name": "Cuman",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "khazar",
+      "name": "Khazar",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "bolghar",
+      "name": "Bolghar",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "bashkir",
+      "name": "Bashkir",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "avar",
+      "name": "Avar",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "karluk",
+      "name": "Karluk",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "kimek",
+      "name": "Kimek",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "kipchak",
+      "name": "Kipchak",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "laktan",
+      "name": "Laktan",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "kirghiz",
+      "name": "Kirghiz",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "uyghur",
+      "name": "Uyghur",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "yughur",
+      "name": "Yughur",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "uriankhai",
+      "name": "Uriankhai",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "chuvash",
+      "name": "Chuvash",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "shatuo",
+      "name": "Shatuo",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "ongud",
+      "name": "Öngüd",
+      "heritage": "heritage_mongolic"
+    },
+    {
+      "id": "turkmen",
+      "name": "Turkmen",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "kazak",
+      "name": "Kazak",
+      "heritage": "heritage_turkic"
+    },
+    {
+      "id": "komi",
+      "name": "Permian",
+      "heritage": "heritage_ugro_permian"
+    },
+    {
+      "id": "khanty",
+      "name": "Ostyak",
+      "heritage": "heritage_ugro_permian"
+    },
+    {
+      "id": "samoyed",
+      "name": "Bjarmian",
+      "heritage": "heritage_ugro_permian"
+    },
+    {
+      "id": "viet",
+      "name": "Viet",
+      "heritage": "heritage_viet"
+    },
+    {
+      "id": "vlach",
+      "name": "Vlach",
+      "heritage": "heritage_vlach"
+    },
+    {
+      "id": "mordvin",
+      "name": "Mordvin",
+      "heritage": "heritage_volga_finnic"
+    },
+    {
+      "id": "merya",
+      "name": "Merya",
+      "heritage": "heritage_volga_finnic"
+    },
+    {
+      "id": "meshchera",
+      "name": "Meshchera",
+      "heritage": "heritage_volga_finnic"
+    },
+    {
+      "id": "mari",
+      "name": "Mari",
+      "heritage": "heritage_volga_finnic"
+    },
+    {
+      "id": "muroma",
+      "name": "Muroma",
+      "heritage": "heritage_volga_finnic"
+    },
+    {
+      "id": "malinke",
+      "name": "Malinke",
+      "heritage": "heritage_west_african"
+    },
+    {
+      "id": "bobo",
+      "name": "Bobo",
+      "heritage": "heritage_west_african"
+    },
+    {
+      "id": "gur",
+      "name": "Gur",
+      "heritage": "heritage_west_african"
+    },
+    {
+      "id": "marka",
+      "name": "Marka",
+      "heritage": "heritage_west_african"
+    },
+    {
+      "id": "mel",
+      "name": "Mel",
+      "heritage": "heritage_west_african"
+    },
+    {
+      "id": "english",
+      "name": "English",
+      "heritage": "heritage_west_germanic"
+    },
+    {
+      "id": "anglo_saxon",
+      "name": "Anglo-Saxon",
+      "heritage": "heritage_west_germanic"
+    },
+    {
+      "id": "old_saxon",
+      "name": "Old Saxon",
+      "heritage": "heritage_west_germanic"
+    },
+    {
+      "id": "scottish",
+      "name": "Scots",
+      "heritage": "heritage_west_germanic"
+    },
+    {
+      "id": "pommeranian",
+      "name": "Pomeranian",
+      "heritage": "heritage_west_slavic"
+    },
+    {
+      "id": "czech",
+      "name": "Czech",
+      "heritage": "heritage_west_slavic"
+    },
+    {
+      "id": "polish",
+      "name": "Polish",
+      "heritage": "heritage_west_slavic"
+    },
+    {
+      "id": "polabian",
+      "name": "Polabian",
+      "heritage": "heritage_west_slavic"
+    },
+    {
+      "id": "slovien",
+      "name": "Slovien",
+      "heritage": "heritage_west_slavic"
+    },
+    {
+      "id": "carantanian",
+      "name": "Carantanian",
+      "heritage": "heritage_west_slavic"
+    },
+    {
+      "id": "yoruba",
+      "name": "Yoruba",
+      "heritage": "heritage_yoruba"
+    },
+    {
+      "id": "edo",
+      "name": "Edo",
+      "heritage": "heritage_yoruba"
+    },
+    {
+      "id": "igbo",
+      "name": "Igbo",
+      "heritage": "heritage_yoruba"
+    },
+    {
+      "id": "ewe",
+      "name": "Ewe",
+      "heritage": "heritage_yoruba"
+    }
+  ],
+  "faiths": [
+    {
+      "id": "akom_pagan",
+      "name": "Akom",
+      "religion": "Akan",
+      "religion_id": "akom_religion"
+    },
+    {
+      "id": "aluk",
+      "name": "Aluk",
+      "religion": "Aluk",
+      "religion_id": "aluk_religion"
+    },
+    {
+      "id": "baltic_pagan",
+      "name": "Vidilism",
+      "religion": "Baltic",
+      "religion_id": "baltic_religion"
+    },
+    {
+      "id": "basque_pagan",
+      "name": "Era Zaharrak",
+      "religion": "Euskal Erlijioa",
+      "religion_id": "basque_religion"
+    },
+    {
+      "id": "bilikuism",
+      "name": "Bilikuism",
+      "religion": "Nakkavaram",
+      "religion_id": "biliku_religion"
+    },
+    {
+      "id": "pulugaism",
+      "name": "Pūlugaism",
+      "religion": "Nakkavaram",
+      "religion_id": "biliku_religion"
+    },
+    {
+      "id": "bimoism",
+      "name": "Bimoism",
+      "religion": "Bimoism",
+      "religion_id": "bimoism_religion"
+    },
+    {
+      "id": "bon",
+      "name": "Gyur Bön",
+      "religion": "Tibetan",
+      "religion_id": "bon_religion"
+    },
+    {
+      "id": "old_bon",
+      "name": "Khyarwé Bön",
+      "religion": "Tibetan",
+      "religion_id": "bon_religion"
+    },
+    {
+      "id": "theravada",
+      "name": "Theravada",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "mahayana",
+      "name": "Mahayana",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "vajrayana",
+      "name": "Vajrayana",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "ari",
+      "name": "Ari",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "lamaism",
+      "name": "Nangchos",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "pundarika",
+      "name": "Pundarika",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "mantrayana",
+      "name": "Mantrayana",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "dhyana",
+      "name": "Dhyana",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "sukhavati",
+      "name": "Sukhavati",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "avatamsaka",
+      "name": "Avatamsaka",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "maitreya",
+      "name": "Maitreya",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "vinaya",
+      "name": "Vinaya",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "yogacara",
+      "name": "Yogacara",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "acharya",
+      "name": "Acharya",
+      "religion": "Buddhism",
+      "religion_id": "buddhism_religion"
+    },
+    {
+      "id": "catholic",
+      "name": "Catholicism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "orthodox",
+      "name": "Orthodoxy",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "coptic",
+      "name": "Coptic",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "armenian_apostolic",
+      "name": "Apostolic",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "conversos",
+      "name": "Conversos",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "cathar",
+      "name": "Catharism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "waldensian",
+      "name": "Waldensianism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "lollard",
+      "name": "Lollardy",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "iconoclast",
+      "name": "Iconoclasm",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "bogomilist",
+      "name": "Bogomilism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "paulician",
+      "name": "Paulicianism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "nestorian",
+      "name": "Nestorianism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "messalian",
+      "name": "Messalianism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "adamites",
+      "name": "Adamitism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "insular_celtic",
+      "name": "Insularism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "bosnian_church",
+      "name": "Krstjani",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "mozarabic_church",
+      "name": "Mozarabism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "adoptionist",
+      "name": "Adoptionism",
+      "religion": "Christianity",
+      "religion_id": "christianity_religion"
+    },
+    {
+      "id": "jingxue",
+      "name": "Jingxue",
+      "religion": "Confucianism",
+      "religion_id": "confucianism_religion"
+    },
+    {
+      "id": "daoxue",
+      "name": "Daoxue",
+      "religion": "Confucianism",
+      "religion_id": "confucianism_religion"
+    },
+    {
+      "id": "dayawism",
+      "name": "Dayawism",
+      "religion": "Dayawism",
+      "religion_id": "dayawism_religion"
+    },
+    {
+      "id": "donyipoloism",
+      "name": "Donyi-Poloism",
+      "religion": "Tanism",
+      "religion_id": "tani_religion"
+    },
+    {
+      "id": "sedism",
+      "name": "Sedism",
+      "religion": "Tanism",
+      "religion_id": "tani_religion"
+    },
+    {
+      "id": "manichean",
+      "name": "Manichaeism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "mandeaism",
+      "name": "Mandaeism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "sabianism",
+      "name": "Sabianism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "valentinianism",
+      "name": "Valentinianism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "sethianism",
+      "name": "Sethianism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "priscillianism",
+      "name": "Priscillianism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "cainitism",
+      "name": "Cainitism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "mingism",
+      "name": "Mingism",
+      "religion": "Dualism",
+      "religion_id": "dualism_religion"
+    },
+    {
+      "id": "finnish_pagan",
+      "name": "Ukonusko",
+      "religion": "Finno-Ugric",
+      "religion_id": "finno_ugric_religion"
+    },
+    {
+      "id": "norse_pagan",
+      "name": "Ásatrú",
+      "religion": "Norse",
+      "religion_id": "germanic_religion"
+    },
+    {
+      "id": "hantuism",
+      "name": "Hantuism",
+      "religion": "Hantuism",
+      "religion_id": "hantuism_religion"
+    },
+    {
+      "id": "hellenic_pagan",
+      "name": "Hellenism",
+      "religion": "Greco-Roman",
+      "religion_id": "hellenism_religion"
+    },
+    {
+      "id": "vaishnavism",
+      "name": "Vaishnavism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "advaitism",
+      "name": "Advaita Vedanta",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "shaivism",
+      "name": "Shaivism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "srikula_shaktism",
+      "name": "Srikula Shaktism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "kalikula_shaktism",
+      "name": "Kalikula Shaktism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "smartism",
+      "name": "Smartism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "krishnaism",
+      "name": "Krishnaism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "saura",
+      "name": "Saurism",
+      "religion": "Hinduism",
+      "religion_id": "hinduism_religion"
+    },
+    {
+      "id": "dab_qhuas",
+      "name": "Dab Qhuas",
+      "religion": "Dab Qhuas",
+      "religion_id": "dab_qhuas_religion"
+    },
+    {
+      "id": "ashari",
+      "name": "Ash'arism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "muwalladi",
+      "name": "Muwalladism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "maturidi",
+      "name": "Maturidism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "masmudi",
+      "name": "Almohadism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "mutazila",
+      "name": "Mu'tazilism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "quranist",
+      "name": "Quranism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "ismaili",
+      "name": "Isma'ilism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "qarmatian",
+      "name": "Qarmatianism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "nizari",
+      "name": "Nizarism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "zayidi",
+      "name": "Zayidism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "imami",
+      "name": "Imamism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "ghulat",
+      "name": "Ikhtilafism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "alawite",
+      "name": "Alawism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "alevi",
+      "name": "Alevism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "druze",
+      "name": "Druze",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "ibadi",
+      "name": "Ibadism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "azariqa",
+      "name": "Azraqism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "najdat",
+      "name": "Najdatism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "sufri",
+      "name": "Sufrism",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "hafizi",
+      "name": "Hafizi",
+      "religion": "Islam",
+      "religion_id": "islam_religion"
+    },
+    {
+      "id": "digambara",
+      "name": "Digambara",
+      "religion": "Jainism",
+      "religion_id": "jainism_religion"
+    },
+    {
+      "id": "svetambara",
+      "name": "Svetambara",
+      "religion": "Jainism",
+      "religion_id": "jainism_religion"
+    },
+    {
+      "id": "yapaniya",
+      "name": "Yapaniya",
+      "religion": "Jainism",
+      "religion_id": "jainism_religion"
+    },
+    {
+      "id": "rabbinism",
+      "name": "Rabbinism",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "karaism",
+      "name": "Karaism",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "haymanot",
+      "name": "Haymanot",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "malabarism",
+      "name": "Malabarism",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "samaritan",
+      "name": "Samaritanism",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "kabarism",
+      "name": "Kuzarism",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "merkabah",
+      "name": "Merkabah",
+      "religion": "Judaism",
+      "religion_id": "judaism_religion"
+    },
+    {
+      "id": "kaharingan",
+      "name": "Kaharingan",
+      "religion": "Kaharingan",
+      "religion_id": "kaharingan_religion"
+    },
+    {
+      "id": "kamuyism_pagan",
+      "name": "Kamuyism",
+      "religion": "Ezo",
+      "religion_id": "kamuyism_religion"
+    },
+    {
+      "id": "kushitism_pagan",
+      "name": "Kushitism",
+      "religion": "Kordofan",
+      "religion_id": "kushitism_religion"
+    },
+    {
+      "id": "magyar_pagan",
+      "name": "Táltosism",
+      "religion": "Uralic",
+      "religion_id": "magyar_religion"
+    },
+    {
+      "id": "moism",
+      "name": "Moism",
+      "religion": "Moism",
+      "religion_id": "moism_religion"
+    },
+    {
+      "id": "mu",
+      "name": "mu",
+      "religion": "muism_religion",
+      "religion_id": "muism_religion"
+    },
+    {
+      "id": "kiratism",
+      "name": "Kiratism",
+      "religion": "Mundhumism",
+      "religion_id": "mundhum_religion"
+    },
+    {
+      "id": "yumaism",
+      "name": "Yumaism",
+      "religion": "Mundhumism",
+      "religion_id": "mundhum_religion"
+    },
+    {
+      "id": "north_african_acham_pagan",
+      "name": "Achamánism",
+      "religion": "North-African",
+      "religion_id": "north_african_religion"
+    },
+    {
+      "id": "pagan",
+      "name": "Paganism",
+      "religion": "Paganism",
+      "religion_id": "paganism_religion"
+    },
+    {
+      "id": "rrmeaism",
+      "name": "Vvluphixje",
+      "religion": "Hsexje",
+      "religion_id": "qiangic_religion"
+    },
+    {
+      "id": "melieism",
+      "name": "Melie",
+      "religion": "Hsexje",
+      "religion_id": "qiangic_religion"
+    },
+    {
+      "id": "satsana_phi",
+      "name": "Thep Arak",
+      "religion": "Thep Arak",
+      "religion_id": "satsana_phi_religion"
+    },
+    {
+      "id": "shamanism",
+      "name": "Shamanism",
+      "religion": "Shamanism",
+      "religion_id": "shamanism_religion"
+    },
+    {
+      "id": "shinto",
+      "name": "Shintō",
+      "religion": "Shintōism",
+      "religion_id": "shintoism_religion"
+    },
+    {
+      "id": "shugendo",
+      "name": "Shugendō",
+      "religion": "Shintōism",
+      "religion_id": "shintoism_religion"
+    },
+    {
+      "id": "siberian_pagan",
+      "name": "Turumism",
+      "religion": "Siberian",
+      "religion_id": "siberian_religion"
+    },
+    {
+      "id": "slavic_pagan",
+      "name": "Slovianska Pravda",
+      "religion": "Slavic",
+      "religion_id": "slavic_religion"
+    },
+    {
+      "id": "zhengyi",
+      "name": "Zhengyi",
+      "religion": "Taoism",
+      "religion_id": "taoism_religion"
+    },
+    {
+      "id": "shangqing",
+      "name": "Shangqing",
+      "religion": "Taoism",
+      "religion_id": "taoism_religion"
+    },
+    {
+      "id": "quanzhen",
+      "name": "Quanzhen",
+      "religion": "Taoism",
+      "religion_id": "taoism_religion"
+    },
+    {
+      "id": "tengri_pagan",
+      "name": "Tengriism",
+      "religion": "Steppe",
+      "religion_id": "tengrism_religion"
+    },
+    {
+      "id": "tolotang",
+      "name": "Tolotang",
+      "religion": "Tolotang",
+      "religion_id": "tolotang_religion"
+    },
+    {
+      "id": "utaki",
+      "name": "Utaki",
+      "religion": "Utaki",
+      "religion_id": "utaki_religion"
+    },
+    {
+      "id": "waaqism_pagan",
+      "name": "Waaqism",
+      "religion": "Bantu-Somali",
+      "religion_id": "waaqism_religion"
+    },
+    {
+      "id": "ngaiism_pagan",
+      "name": "Gothaithaya Ngai",
+      "religion": "Bantu-Somali",
+      "religion_id": "waaqism_religion"
+    },
+    {
+      "id": "west_african_pagan",
+      "name": "Siguism",
+      "religion": "Mandé",
+      "religion_id": "west_african_religion"
+    },
+    {
+      "id": "west_african_bidu_pagan",
+      "name": "Bidaism",
+      "religion": "Mandé",
+      "religion_id": "west_african_religion"
+    },
+    {
+      "id": "west_african_bori_pagan",
+      "name": "Bori",
+      "religion": "Hausa",
+      "religion_id": "west_african_bori_religion"
+    },
+    {
+      "id": "west_african_orisha_pagan",
+      "name": "Orisa",
+      "religion": "Yoruba",
+      "religion_id": "west_african_orisha_religion"
+    },
+    {
+      "id": "west_african_roog_pagan",
+      "name": "Roog Sene",
+      "religion": "Senegambia",
+      "religion_id": "west_african_roog_religion"
+    },
+    {
+      "id": "yazidi",
+      "name": "Yazidism",
+      "religion": "Miletê Tawûsê Melek",
+      "religion_id": "yazidi_religion"
+    },
+    {
+      "id": "meshefaresism",
+      "name": "Meshefaresism",
+      "religion": "Miletê Tawûsê Melek",
+      "religion_id": "yazidi_religion"
+    },
+    {
+      "id": "kitebacilweism",
+      "name": "Kitêbacilweism",
+      "religion": "Miletê Tawûsê Melek",
+      "religion_id": "yazidi_religion"
+    },
+    {
+      "id": "mazdayasna",
+      "name": "Mazdayasna",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "zurvanism",
+      "name": "Behafaridism",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "gayomarthianism",
+      "name": "Gayomartianism",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "khurmazta",
+      "name": "Khurmazdism",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "mazdakism",
+      "name": "Mazdakism",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "khurramism",
+      "name": "Khurramism",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "urartuism",
+      "name": "Arewordik",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "afridunism",
+      "name": "Afridunism",
+      "religion": "Zoroastrianism",
+      "religion_id": "zoroastrianism_religion"
+    },
+    {
+      "id": "zun_pagan",
+      "name": "Zunism",
+      "religion": "Zunbil",
+      "religion_id": "zunism_religion"
+    }
+  ]
+};

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CK3 Random Ruler Designer</title>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="head-left">
+      <h1><i class="ph ph-sword"></i> Unofficial CK3 Ruler Generator</h1>
+      <p class="sub">Generates random Ruler Designer characters within the <strong>400-point</strong> cap (achievement-eligible).</p>
+    </div>
+    <div class="head-bmc"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="guidariollh" data-color="#1c1813" data-emoji="" data-font="Bree" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script></div>
+  </header>
+
+  <main>
+    <!-- ============ CONTROLS (left column) ============ -->
+    <section class="panel controls">
+      <div class="ctl-row toggles">
+        <label class="switch">
+          <input type="checkbox" id="achievementToggle" checked>
+          <span>Achievement-eligible <em>(total ≤ 400)</em></span>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="ageToggle" checked>
+          <span>Count age cost in total</span>
+        </label>
+      </div>
+
+      <div class="lockgrid">
+        <div class="lockrow">
+          <label class="lk-label" for="cultureSel"><i class="ph ph-globe-hemisphere-west"></i> Culture</label>
+          <select id="cultureSel"></select>
+          <label class="lk-toggle" title="Lock so it isn't randomized"><input type="checkbox" id="cultureLock"><span><i class="ph ph-lock-simple"></i></span></label>
+        </div>
+        <div class="lockrow">
+          <label class="lk-label" for="faithSel"><i class="ph ph-hands-praying"></i> Faith</label>
+          <select id="faithSel"></select>
+          <label class="lk-toggle" title="Lock so it isn't randomized"><input type="checkbox" id="faithLock"><span><i class="ph ph-lock-simple"></i></span></label>
+        </div>
+        <div class="lockrow">
+          <label class="lk-label" for="ageInput"><i class="ph ph-cake"></i> Age</label>
+          <input type="number" id="ageInput" min="16" max="70" value="30">
+          <label class="lk-toggle" title="Lock so it isn't randomized"><input type="checkbox" id="ageLock"><span><i class="ph ph-lock-simple"></i></span></label>
+        </div>
+      </div>
+      <p class="lk-hint">Leave unlocked to randomize; check the lock to keep the chosen value across generations.</p>
+
+      <div class="minrow">
+        <label for="minPoints">Minimum points: <strong id="minPointsVal">0</strong></label>
+        <input type="range" id="minPoints" min="0" max="380" step="10" value="0">
+      </div>
+
+      <details class="group">
+        <summary>DLCs you own <span class="hint">(filters exclusive traits)</span></summary>
+        <div id="dlcList" class="chips"></div>
+        <div class="mini">
+          <button type="button" id="dlcAll" class="link">Select all</button>
+          <button type="button" id="dlcNone" class="link">Base game only</button>
+        </div>
+      </details>
+
+      <details class="group">
+        <summary>Trait categories to include <span class="hint">(besides personality + education)</span></summary>
+        <div id="catList" class="chips"></div>
+      </details>
+
+      <div class="lockrow focusrow">
+        <label class="lk-label" for="focusSel"><i class="ph ph-crosshair-simple"></i> Focus</label>
+        <select id="focusSel">
+          <option value="">Random (no focus)</option>
+          <option value="diplomacy">Diplomacy</option>
+          <option value="martial">Martial</option>
+          <option value="stewardship">Stewardship</option>
+          <option value="intrigue">Intrigue</option>
+          <option value="learning">Learning</option>
+          <option value="prowess">Prowess</option>
+        </select>
+      </div>
+      <p class="lk-hint">A focus biases the education, the top skill and matching traits toward that attribute.</p>
+
+      <button id="generate" class="primary"><i class="ph ph-dice-five"></i> Generate ruler</button>
+    </section>
+
+    <!-- ============ RESULT (right column) ============ -->
+    <section class="panel result" id="result" hidden>
+      <div class="char-head">
+        <div>
+          <h2 id="charTitle">Ruler</h2>
+          <p class="char-meta" id="charMeta"></p>
+        </div>
+        <div class="points">
+          <div class="points-num"><span id="ptUsed">0</span><small>/ <span id="ptCap">400</span></small></div>
+          <div class="points-label">points used</div>
+          <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+          <div class="points-rem" id="ptRemaining"></div>
+          <div class="points-break" id="ptBreakdown"></div>
+        </div>
+      </div>
+
+      <div class="skillgrid" id="skillGrid"></div>
+
+      <div class="cf-grid">
+        <div class="cf"><span class="cf-label"><i class="ph ph-globe-hemisphere-west"></i> Culture</span><span id="cultureVal" class="cf-val"></span></div>
+        <div class="cf"><span class="cf-label"><i class="ph ph-hands-praying"></i> Faith</span><span id="faithVal" class="cf-val"></span></div>
+      </div>
+
+      <div id="traitGroups"></div>
+
+      <p id="warn" class="warn" hidden></p>
+    </section>
+  </main>
+
+  <footer>
+    <span id="dataMeta"></span> · data extracted from Crusader Kings III base game files<br>
+    Unofficial fan-made tool. Not affiliated with, endorsed by, or sponsored by Paradox Interactive. Crusader Kings III is a trademark of Paradox Interactive AB.
+  </footer>
+</div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
