@@ -231,6 +231,8 @@ input[type="range"]::-moz-range-thumb{
 #barFill.over{background:linear-gradient(180deg,#d8776b,var(--red));}
 .pts-sub{display:flex;justify-content:space-between;gap:14px;margin-top:9px;font-size:14px;color:var(--muted);}
 .pts-sub strong{color:var(--text);font-weight:600;}
+.pts-note{margin:9px 0 0;font-size:12.5px;color:#6f6650;font-style:italic;display:flex;align-items:center;gap:6px;}
+.pts-note i{font-size:14px;color:var(--muted);font-style:normal;}
 .warn{margin:10px 0 0;font-size:14px;color:var(--red);display:flex;align-items:center;gap:7px;}
 .warn[hidden]{display:none;}
 

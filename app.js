@@ -92,13 +92,16 @@
       .map(x => x.t);
   }
 
-  // Age cost = floor(age * multiplier). The multiplier array has one extra leading entry
-  // vs the levels array, so the multiplier for a level is at index+1. Verified against
-  // in-game totals (age 18->48, 30->66, 33->62).
+  // Age cost = floor(age * multiplier). Use the multiplier of the HIGHEST age level that is
+  // <= age (the bracket the character is in), NOT the next one up — otherwise ages between
+  // the sparse tail breakpoints (50/60/70) snapped to the wrong bracket. The multiplier array
+  // has one extra leading entry vs the levels array, so a level at al[idx] uses mu[idx+1].
+  // Verified against in-game totals: 16->40, 18->48, 30->66, 33->62,
+  // 51-54->10, 55-59->11, 60-69->6, 70+->0.
   function ageCost(age) {
     const al = DATA.config.age_curve.age_levels, mu = DATA.config.age_curve.multipliers;
-    let idx = al.length;
-    for (let i = 0; i < al.length; i++) { if (al[i] >= age) { idx = i; break; } }
+    let idx = 0;
+    for (let i = 0; i < al.length; i++) { if (al[i] <= age) idx = i; else break; }
     const m = (mu[idx + 1] != null) ? mu[idx + 1] : mu[mu.length - 1];
     return Math.max(0, Math.floor(age * m));
   }
