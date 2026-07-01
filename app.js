@@ -167,10 +167,20 @@
       chosen.push(t); traitSpent += t.cost; return true;
     };
 
-    // 2) personality — bias toward the focus skill when set
+    // 2) personality — softly bias toward the focus skill instead of always picking the
+    //    single highest-modifier trait. Weighted-random order: focus traits are favored
+    //    but not guaranteed, so e.g. Martial focus no longer forces Wrathful every time.
+    //    When the trait isn't taken, the freed budget lets the (already boosted) focus
+    //    skill carry more points instead. Anti-focus traits (weight 0) stay excluded.
     let want = 1; while (want < 3 && Math.random() < 0.65) want++;
     let persPool = shuffle(byCat("personality"));
-    if (focus) persPool.sort((a,b) => ((b.modifiers && b.modifiers[focus]) || 0) - ((a.modifiers && a.modifiers[focus]) || 0));
+    if (focus) {
+      const fw = (t) => Math.max(0, 1 + (((t.modifiers && t.modifiers[focus]) || 0)));
+      persPool = persPool
+        .map(t => ({ t, k: fw(t) * Math.random() }))
+        .sort((a, b) => b.k - a.k)
+        .map(x => x.t);
+    }
     let added = 0;
     for (const t of persPool) { if (added >= want) break; if (tryAddTrait(t)) added++; }
 
