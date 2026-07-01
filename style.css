@@ -124,7 +124,13 @@ strong{font-weight:600;}
 }
 .field > label i{color:var(--gold);font-size:15px;}
 .input-row{display:flex;gap:8px;}
-.input-row select,.input-row input,.field > select{flex:1;}
+.input-row select,.input-row input,.field > select{flex:1;min-width:0;}
+
+/* labels beside the input (Culture / Faith / Age / Focus) instead of above it */
+.field:not(.range-field){display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;}
+.field:not(.range-field) > label{flex:0 0 84px;margin-bottom:0;}
+.field:not(.range-field) > .input-row{flex:1 1 auto;min-width:0;}
+.field:not(.range-field) > .hint{flex:1 1 100%;margin:2px 0 0;}
 
 select,input[type="number"]{
   width:100%;font:inherit;font-size:14.5px;font-weight:600;color:var(--text);
