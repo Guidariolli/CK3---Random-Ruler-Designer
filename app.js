@@ -162,8 +162,12 @@
     let education = null;
     const eduPool = byCat("education");
     if (focus && focus !== "prowess") {
-      const focusEdus = eduPool.filter(t => t.group === "education_" + focus).sort((a,b) => b.cost - a.cost);
-      for (const t of focusEdus) { if (!capOn || t.cost <= cap - aCost) { education = t; break; } }
+      // randomize across the focus branch's 5 education tiers (was: always the highest).
+      // A cheaper tier frees budget that the skill fill and other traits pick up, and the
+      // focus skill still lands at its 12-16 target regardless of the education level.
+      const focusEdus = eduPool.filter(t => t.group === "education_" + focus
+                                            && (!capOn || t.cost <= cap - aCost));
+      if (focusEdus.length) education = pick(focusEdus);
     }
     if (!education) { for (const t of shuffle(eduPool)) { if (!capOn || t.cost <= cap - aCost) { education = t; break; } } }
     if (education) { chosen.push(education); traitSpent += education.cost; }
