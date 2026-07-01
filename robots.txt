@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ck3-random-ruler-designer.vercel.app/sitemap.xml

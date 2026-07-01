@@ -10,10 +10,10 @@ body{
   color:var(--text); font-family:"Segoe UI",Roboto,system-ui,sans-serif; line-height:1.5;
   min-height:100vh;
 }
-/* BG.png background at 20% opacity, fixed behind all content */
+/* background at 20% opacity, fixed behind all content (bg.jpg = compressed BG.png, ~85% smaller for faster LCP) */
 body::before{
   content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-  background:url("BG.png") center center / cover no-repeat fixed;
+  background:url("bg.jpg") center center / cover no-repeat fixed;
   opacity:0.2;
 }
 .app{max-width:1240px; margin:0 auto; padding:24px 16px 60px}
@@ -134,6 +134,18 @@ footer{text-align:center; color:var(--muted); font-size:.8rem; margin-top:14px}
   .points{text-align:left; min-width:100%}
   .char-head{flex-direction:column}
 }
+
+/* SEO content / FAQ */
+.about{margin-top:20px}
+.about h2{margin:0 0 10px; color:var(--gold2); font-size:1.35rem}
+.about h3{margin:20px 0 10px; color:var(--gold2); font-size:1.05rem}
+.about p{margin:0 0 12px; color:var(--muted); max-width:80ch}
+.about p strong{color:var(--gold)}
+.about details.faq{border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+  margin-bottom:8px; background:var(--panel2)}
+.about details.faq summary{cursor:pointer; font-weight:600; color:var(--gold2); user-select:none}
+.about details.faq p{margin:8px 0 0}
+.about a{color:var(--blue)}
 
 /* Header: title left, Buy Me a Coffee right */
 header{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap}

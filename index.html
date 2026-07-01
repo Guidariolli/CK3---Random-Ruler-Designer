@@ -3,7 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CK3 Random Ruler Designer</title>
+
+<!-- =====================================================================
+     SEO / social. If your Vercel URL is different, change the domain in the
+     four places below (canonical, og:url, og:image, twitter:image) AND in
+     robots.txt + sitemap.xml.
+     ===================================================================== -->
+<title>CK3 Random Ruler Designer — Crusader Kings 3 Ruler Generator (400-point)</title>
+<meta name="description" content="Free CK3 Ruler Designer generator: roll random, achievement-eligible Crusader Kings III rulers under the 400-point cap, with DLC filters, focus builds and lockable culture, faith & age.">
+<meta name="keywords" content="CK3 ruler designer, Crusader Kings 3 ruler generator, CK3 random ruler, CK3 character generator, CK3 400 point ruler, achievement eligible ruler CK3">
+<meta name="author" content="Guidariolli">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#12100c">
+<link rel="canonical" href="https://ck3-random-ruler-designer.vercel.app/">
+
+<!-- Open Graph (Facebook, Discord, WhatsApp, Reddit...) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CK3 Random Ruler Designer">
+<meta property="og:title" content="CK3 Random Ruler Designer — Crusader Kings 3 Ruler Generator">
+<meta property="og:description" content="Roll random, achievement-eligible Crusader Kings III rulers under the 400-point cap. DLC filters, focus builds, lockable culture/faith/age. Free, no login.">
+<meta property="og:url" content="https://ck3-random-ruler-designer.vercel.app/">
+<meta property="og:image" content="https://ck3-random-ruler-designer.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CK3 Random Ruler Designer — Crusader Kings 3 Ruler Generator">
+<meta name="twitter:description" content="Roll random, achievement-eligible Crusader Kings III rulers under the 400-point cap. DLC filters, focus builds, lockable culture/faith/age.">
+<meta name="twitter:image" content="https://ck3-random-ruler-designer.vercel.app/og-image.jpg">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+<!-- Structured data: the tool itself -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CK3 Random Ruler Designer",
+  "alternateName": "Unofficial CK3 Ruler Generator",
+  "url": "https://ck3-random-ruler-designer.vercel.app/",
+  "description": "Free, unofficial Crusader Kings III Ruler Designer generator. Rolls random, achievement-eligible rulers under the 400-point cap, with DLC filters, focus builds and lockable culture, faith and age.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any (web browser)",
+  "browserRequirements": "Requires JavaScript.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Guidariolli" },
+  "about": {
+    "@type": "VideoGame",
+    "name": "Crusader Kings III",
+    "publisher": { "@type": "Organization", "name": "Paradox Interactive" }
+  }
+}
+</script>
+
+<!-- Structured data: FAQ (eligible for rich results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the CK3 Random Ruler Designer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It is a free, unofficial web tool that generates random Ruler Designer characters for Crusader Kings III. It rolls skills, traits, culture and faith for you, keeping the build within the 400-point cap so it stays achievement and ironman eligible." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the generator respect the 400-point achievement cap?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The point math (trait costs, skill costs including how trait modifiers change what you pay, and the age curve) was reverse-engineered from the base game files and calibrated against real in-game totals until it matched exactly. You can also turn the cap off." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which DLCs does it support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You tick the DLCs you own and the generator only pulls traits you can actually use. DLC-specific traits such as those from Roads to Power, All Under Heaven, Wandering Nobles and Tours and Tournaments are mapped, so base-game-only players get valid builds too." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I lock culture, faith or age?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Leave a field unlocked to randomize it, or check the lock to keep the chosen culture, faith or age across generations. You can also pick a focus attribute (Diplomacy, Martial, Stewardship, Intrigue, Learning or Prowess) to bias the build." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free and official?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It is completely free, runs entirely in your browser with no login and no ads, and is an unofficial fan-made tool. It is not affiliated with, endorsed by, or sponsored by Paradox Interactive." }
+    }
+  ]
+}
+</script>
+
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -114,6 +206,31 @@
       <p id="warn" class="warn" hidden></p>
     </section>
   </main>
+
+  <!-- ============ SEO CONTENT (crawlable copy + FAQ) ============ -->
+  <section class="panel about">
+    <h2>About the CK3 Random Ruler Designer</h2>
+    <p>This is a free, unofficial <strong>Crusader Kings III Ruler Designer generator</strong>. Instead of building a character by hand, it rolls a full random ruler for you — six skills, a batch of personality, education and lifestyle traits, plus a random culture and faith — while keeping the total within the <strong>400-point cap</strong> so the character stays <strong>achievement and ironman eligible</strong>.</p>
+    <p>The point math was reverse-engineered from the base game files and calibrated against real in-game totals: trait costs, skill costs (including how trait modifiers change what each skill point costs) and the age curve. Filter by the DLCs you own, pick a focus attribute to shape the build, set a minimum point budget, and lock culture, faith or age when you want to keep them fixed between rolls.</p>
+
+    <h3>Frequently asked questions</h3>
+    <details class="faq">
+      <summary>Does it respect the 400-point achievement cap?</summary>
+      <p>Yes. Builds stay under the 400-point cap by default so they remain achievement and ironman eligible, and every roll shows a full breakdown of age, skills and traits. You can also switch the cap off if you just want inspiration.</p>
+    </details>
+    <details class="faq">
+      <summary>Which DLCs are supported?</summary>
+      <p>Tick the DLCs you own and the generator only pulls traits you can actually use. Traits tied to Roads to Power, All Under Heaven, Wandering Nobles and Tours and Tournaments are mapped, and base-game-only players still get valid rulers.</p>
+    </details>
+    <details class="faq">
+      <summary>What is a focus build?</summary>
+      <p>Pick an attribute — Diplomacy, Martial, Stewardship, Intrigue, Learning or Prowess — and the generator biases the education, the top skill and supporting traits toward it. Leave it on “Random (no focus)” for a fully random ruler.</p>
+    </details>
+    <details class="faq">
+      <summary>Is it free and official?</summary>
+      <p>It is completely free, runs entirely in your browser with no login and no ads. It is an unofficial fan-made tool and is not affiliated with, endorsed by, or sponsored by Paradox Interactive.</p>
+    </details>
+  </section>
 
   <footer>
     <span id="dataMeta"></span> · data extracted from Crusader Kings III base game files<br>

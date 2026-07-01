@@ -28,7 +28,9 @@ Data loads from `data.js` (via `<script>`), so it also works by double-clicking 
 - **GitHub Pages:** Settings → Pages → branch `main`, folder `/ (root)`.
 - **Vercel:** import the repo — it's a static site, framework preset **Other**, no build step.
 
-Make sure `BG.png` is included in the deploy.
+The site loads its background from `bg.jpg` (a compressed copy of `BG.png`, ~85% smaller for faster load) and its social preview from `og-image.jpg`. Make sure `bg.jpg`, `og-image.jpg`, `favicon.svg`, `robots.txt` and `sitemap.xml` are included in the deploy (they are just static files, so they ship automatically). `BG.png` is only needed to regenerate those.
+
+> **SEO note:** the canonical URL, Open Graph/Twitter tags (in `index.html`), `robots.txt` and `sitemap.xml` all point to `https://ck3-random-ruler-designer.vercel.app/`. If your Vercel domain differs, update the URL in those files.
 
 ## 🔧 Regenerating the data
 

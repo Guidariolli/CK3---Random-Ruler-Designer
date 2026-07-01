@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CK3 Ruler crown">
+  <rect width="64" height="64" rx="13" fill="#1c1813"/>
+  <path d="M11 43 L8 20 L21 30 L32 13 L43 30 L56 20 L53 43 Z"
+        fill="#e6c877" stroke="#c9a34e" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="11" y="45" width="42" height="7" rx="2.5" fill="#c9a34e"/>
+  <circle cx="32" cy="13" r="3.2" fill="#c9a34e"/>
+  <circle cx="8"  cy="20" r="2.6" fill="#c9a34e"/>
+  <circle cx="56" cy="20" r="2.6" fill="#c9a34e"/>
+</svg>
