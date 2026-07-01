@@ -33,17 +33,35 @@
   };
   const CAT_ORDER = ["education","personality","congenital","lifestyle","fame","commander","health","childhood","winter_commander","other"];
 
+  // ---------- presentation only (icons / labels) ----------
+  const SKILL_ICONS = {
+    diplomacy:"ph-handshake", martial:"ph-sword", stewardship:"ph-coins",
+    intrigue:"ph-mask-happy", learning:"ph-book-open", prowess:"ph-shield",
+  };
+  const CAT_ICONS = {
+    education:"ph-graduation-cap", personality:"ph-mask-happy", congenital:"ph-dna",
+    lifestyle:"ph-tree", fame:"ph-medal", commander:"ph-flag-banner", health:"ph-heartbeat",
+    childhood:"ph-baby", winter_commander:"ph-snowflake", other:"ph-seal",
+  };
+  const skillQuality = (v) => v <= 4 ? "Poor" : v <= 8 ? "Average" : v <= 11 ? "Skilled" : v <= 15 ? "Gifted" : "Exceptional";
+  const prettyHeritage = (h) => h ? h.replace(/^heritage_/,"").replace(/_/g," ").replace(/\b\w/g, m => m.toUpperCase()) : "";
+  function effText(t) {
+    const m = t.modifiers || {}; const keys = Object.keys(m);
+    if (!keys.length) return "";
+    const parts = keys.slice(0, 6).map(k => (m[k] > 0 ? "+" : "") + m[k] + " " + k.replace(/_/g, " "));
+    return parts.join(" · ") + (keys.length > 6 ? " …" : "");
+  }
+
   // ---------- UI helpers ----------
   function makeChip(kind, value, label, count, on) {
     const l = document.createElement("label");
-    l.className = "chip" + (on ? " on" : "");
+    l.className = "chk";
     l.innerHTML = '<input type="checkbox" data-kind="'+kind+'" value="'+value+'" '+(on?"checked":"")+'>'
-      + '<span>'+label+'</span><span class="cnt">'+count+'</span>';
-    const input = l.querySelector("input");
-    input.addEventListener("change", () => l.classList.toggle("on", input.checked));
+      + '<span class="box"><i class="ph ph-check" aria-hidden="true"></i></span>'
+      + '<span>'+label+' <span class="dim">'+count+'</span></span>';
     return l;
   }
-  function setChip(input, on){ input.checked = on; input.closest(".chip").classList.toggle("on", on); }
+  function setChip(input, on){ input.checked = on; }
   const checkedVals = (kind) =>
     new Set([...document.querySelectorAll('input[data-kind="'+kind+'"]:checked')].map(i => i.value));
 
@@ -234,26 +252,35 @@
 
   function render(r) {
     $("result").hidden = false;
-    $("charTitle").innerHTML = '<i class="ph ph-crown"></i> Random Ruler'
+    $("charTitle").textContent = 'Random Ruler'
       + (r.focus ? ' · ' + r.focus.charAt(0).toUpperCase() + r.focus.slice(1) + ' focus' : '');
     $("charMeta").innerHTML =
       r.gender + " · Age <strong>" + r.age + "</strong>" +
-      (r.ageOn ? ' <span class="hint">(' + r.aCost + " pts)</span>" : "");
+      (r.ageOn ? ' <span class="dim">(' + r.aCost + " pts)</span>" : "");
 
     $("skillGrid").innerHTML = r.skills.map(s => {
       const disp = r.displayed(s);
       const c = tableCost(s.base, s.prow);
       const isEdu = s.key === r.eduSkill && r.eduBonus > SKILL_MIN_DISPLAY;
       const isFocus = s.key === r.focus;
+      const icon = SKILL_ICONS[s.key] || "ph-star";
       const tip = "base " + s.base + (s.mod ? " + traits " + (s.mod>0?"+":"") + s.mod : "");
+      const badge = isFocus ? ' <i class="ph ph-crosshair" title="Focus"></i>'
+                  : isEdu   ? ' <i class="ph ph-graduation-cap" title="Education"></i>' : '';
       return '<div class="skill' + (isFocus ? ' focus' : isEdu ? ' edu' : '') + '" title="' + tip + '">'
-        + '<span class="sk-name">' + s.label + (isFocus ? ' <i class="ph ph-crosshair-simple"></i>' : '') + '</span>'
-        + '<span class="sk-val">' + disp + '</span>'
-        + '<span class="sk-cost ' + skillCostCls(c) + '">' + (c>0?"+":"") + c + ' pts</span></div>';
+        + '<div class="sleft"><span class="sicon"><i class="ph ' + icon + '"></i></span>'
+        + '<div><div class="sname">' + s.label + badge + '</div>'
+        + '<div class="squal">' + skillQuality(disp) + '</div></div></div>'
+        + '<div class="sright"><div class="sval">' + disp + '</div>'
+        + '<div class="spts">' + (c>0?"+":"") + c + ' pts</div></div></div>';
     }).join("");
 
-    $("cultureVal").textContent = r.culture.name;
-    $("faithVal").textContent = r.faith.name + (r.faith.religion ? " (" + r.faith.religion + ")" : "");
+    const cv = $("cultureVal");
+    cv.querySelector(".cf-name").textContent = r.culture.name;
+    cv.querySelector(".cf-sub").textContent = prettyHeritage(r.culture.heritage);
+    const fv = $("faithVal");
+    fv.querySelector(".cf-name").textContent = r.faith.name;
+    fv.querySelector(".cf-sub").textContent = r.faith.religion || "";
 
     const total = r.total;
     $("ptUsed").textContent = total;
@@ -273,13 +300,21 @@
     CAT_ORDER.forEach(cat => {
       const items = r.chosen.filter(t => t.category === cat);
       if (!items.length) return;
-      const g = document.createElement("div"); g.className = "tgroup";
-      g.innerHTML = "<h3>" + (CAT_LABELS[cat]||cat) + "</h3>" + items.map(t =>
-        '<div class="trait"><div>'
-          + '<span class="tname">' + t.name + "</span>"
-          + (t.dlc ? '<span class="tdlc"><i class="ph ph-package"></i> ' + t.dlc + "</span>" : "")
-          + modLine(t)
-        + "</div>" + costTag(t.cost) + "</div>").join("");
+      const g = document.createElement("div");
+      const header = '<div class="sec"><h3>' + (CAT_LABELS[cat] || cat) + '</h3><span class="rule"></span></div>';
+      const icon = CAT_ICONS[cat] || "ph-seal";
+      const rows = items.map(t => {
+        const eff = effText(t);
+        const dlc = t.dlc ? '<span class="tdlc"><i class="ph ph-package"></i> ' + t.dlc + '</span>' : '';
+        const meta = eff && dlc ? eff + ' · ' + dlc : (eff || dlc);
+        return '<div class="trait"><span class="ticon"><i class="ph ' + icon + '"></i></span>'
+          + '<div class="tbody"><div class="thead">'
+          + '<span class="tname">' + t.name + '</span>'
+          + '<span class="tpts">' + (t.cost > 0 ? "+" : "") + t.cost + ' pts</span></div>'
+          + (meta ? '<div class="teff">' + meta + '</div>' : '')
+          + '</div></div>';
+      }).join("");
+      g.innerHTML = header + rows;
       box.appendChild(g);
     });
 
@@ -296,7 +331,8 @@
   function boot() {
     $("ptCap").textContent = DATA.config.point_cap;
     $("dataMeta").textContent =
-      DATA._meta.counts.traits + " traits · " + DATA._meta.counts.cultures + " cultures · " + DATA._meta.counts.faiths + " faiths";
+      DATA._meta.counts.traits + " traits · " + DATA._meta.counts.cultures + " cultures · " + DATA._meta.counts.faiths +
+      " faiths · data extracted from Crusader Kings III base game files";
 
     DATA.cultures.forEach(c => BY_CULTURE[c.id] = c);
     DATA.faiths.forEach(f => BY_FAITH[f.id] = f);
@@ -324,6 +360,21 @@
     const mp = $("minPoints");
     const syncMin = () => { $("minPointsVal").textContent = mp.value; };
     mp.addEventListener("input", syncMin); syncMin();
+
+    // Lock buttons (design uses <button> instead of a checkbox). We toggle a
+    // .locked class for styling and mirror it onto b.checked, so generate()'s
+    // existing $("...Lock").checked reads keep working unchanged.
+    ["cultureLock", "faithLock", "ageLock"].forEach(id => {
+      const b = $(id); if (!b) return;
+      b.checked = false;
+      b.addEventListener("click", () => {
+        const on = b.classList.toggle("locked");
+        b.checked = on;
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+        const i = b.querySelector("i");
+        if (i) i.className = "ph " + (on ? "ph-lock" : "ph-lock-open");
+      });
+    });
 
     $("generate").onclick = generate;
     generate();

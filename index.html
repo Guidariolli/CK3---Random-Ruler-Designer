@@ -14,7 +14,7 @@
 <meta name="keywords" content="CK3 ruler designer, Crusader Kings 3 ruler generator, CK3 random ruler, CK3 character generator, CK3 400 point ruler, achievement eligible ruler CK3">
 <meta name="author" content="Guidariolli">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#12100c">
+<meta name="theme-color" content="#0c0e11">
 <link rel="canonical" href="https://ck3-random-ruler-designer.vercel.app/">
 
 <!-- Open Graph (Facebook, Discord, WhatsApp, Reddit...) -->
@@ -85,7 +85,7 @@
     {
       "@type": "Question",
       "name": "Can I lock culture, faith or age?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Leave a field unlocked to randomize it, or check the lock to keep the chosen culture, faith or age across generations. You can also pick a focus attribute (Diplomacy, Martial, Stewardship, Intrigue, Learning or Prowess) to bias the build." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Leave a field unlocked to randomize it, or lock it to keep the chosen culture, faith or age across generations. You can also pick a focus attribute (Diplomacy, Martial, Stewardship, Intrigue, Learning or Prowess) to bias the build." }
     },
     {
       "@type": "Question",
@@ -96,148 +96,216 @@
 }
 </script>
 
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<!-- Phosphor Icons (web font) -->
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app">
-  <header>
-    <div class="head-left">
-      <h1><i class="ph ph-sword"></i> Unofficial CK3 Ruler Generator</h1>
-      <p class="sub">Generates random Ruler Designer characters within the <strong>400-point</strong> cap (achievement-eligible).</p>
-    </div>
-    <div class="head-bmc"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="guidariolli" data-color="#1c1813" data-emoji="" data-font="Bree" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script></div>
-  </header>
+  <div class="wrap">
 
-  <main>
-    <!-- ============ CONTROLS (left column) ============ -->
-    <section class="panel controls">
-      <div class="ctl-row toggles">
-        <label class="switch">
-          <input type="checkbox" id="achievementToggle" checked>
-          <span>Achievement-eligible <em>(total ≤ 400)</em></span>
-        </label>
-        <label class="switch">
-          <input type="checkbox" id="ageToggle" checked>
-          <span>Count age cost in total</span>
-        </label>
-      </div>
-
-      <div class="lockgrid">
-        <div class="lockrow">
-          <label class="lk-label" for="cultureSel"><i class="ph ph-globe-hemisphere-west"></i> Culture</label>
-          <select id="cultureSel"></select>
-          <label class="lk-toggle" title="Lock so it isn't randomized"><input type="checkbox" id="cultureLock"><span><i class="ph ph-lock-simple"></i></span></label>
-        </div>
-        <div class="lockrow">
-          <label class="lk-label" for="faithSel"><i class="ph ph-hands-praying"></i> Faith</label>
-          <select id="faithSel"></select>
-          <label class="lk-toggle" title="Lock so it isn't randomized"><input type="checkbox" id="faithLock"><span><i class="ph ph-lock-simple"></i></span></label>
-        </div>
-        <div class="lockrow">
-          <label class="lk-label" for="ageInput"><i class="ph ph-cake"></i> Age</label>
-          <input type="number" id="ageInput" min="16" max="70" value="30">
-          <label class="lk-toggle" title="Lock so it isn't randomized"><input type="checkbox" id="ageLock"><span><i class="ph ph-lock-simple"></i></span></label>
-        </div>
-      </div>
-      <p class="lk-hint">Leave unlocked to randomize; check the lock to keep the chosen value across generations.</p>
-
-      <div class="minrow">
-        <label for="minPoints">Minimum points: <strong id="minPointsVal">0</strong></label>
-        <input type="range" id="minPoints" min="0" max="380" step="10" value="0">
-      </div>
-
-      <details class="group">
-        <summary>DLCs you own <span class="hint">(filters exclusive traits)</span></summary>
-        <div id="dlcList" class="chips"></div>
-        <div class="mini">
-          <button type="button" id="dlcAll" class="link">Select all</button>
-          <button type="button" id="dlcNone" class="link">Base game only</button>
-        </div>
-      </details>
-
-      <details class="group">
-        <summary>Trait categories to include <span class="hint">(besides personality + education)</span></summary>
-        <div id="catList" class="chips"></div>
-      </details>
-
-      <div class="lockrow focusrow">
-        <label class="lk-label" for="focusSel"><i class="ph ph-crosshair-simple"></i> Focus</label>
-        <select id="focusSel">
-          <option value="">Random (no focus)</option>
-          <option value="diplomacy">Diplomacy</option>
-          <option value="martial">Martial</option>
-          <option value="stewardship">Stewardship</option>
-          <option value="intrigue">Intrigue</option>
-          <option value="learning">Learning</option>
-          <option value="prowess">Prowess</option>
-        </select>
-      </div>
-      <p class="lk-hint">A focus biases the education, the top skill and matching traits toward that attribute.</p>
-
-      <button id="generate" class="primary"><i class="ph ph-dice-five"></i> Generate ruler</button>
-    </section>
-
-    <!-- ============ RESULT (right column) ============ -->
-    <section class="panel result" id="result" hidden>
-      <div class="char-head">
+    <!-- ===================== TOP HEADER ===================== -->
+    <header class="topbar">
+      <div class="brand">
+        <i class="ph ph-sword brand-mark" aria-hidden="true"></i>
         <div>
-          <h2 id="charTitle">Ruler</h2>
-          <p class="char-meta" id="charMeta"></p>
-        </div>
-        <div class="points">
-          <div class="points-num"><span id="ptUsed">0</span><small>/ <span id="ptCap">400</span></small></div>
-          <div class="points-label">points used</div>
-          <div class="bar"><div class="bar-fill" id="barFill"></div></div>
-          <div class="points-rem" id="ptRemaining"></div>
-          <div class="points-break" id="ptBreakdown"></div>
+          <h1>Unofficial CK3 Ruler Generator</h1>
+          <p class="sub">Generates random Ruler Designer characters within the <strong>400-point</strong> cap <span class="dim">(achievement-eligible)</span>.</p>
         </div>
       </div>
+      <a class="btn coffee" href="https://www.buymeacoffee.com/guidariolli" target="_blank" rel="noopener" role="button">
+        <i class="ph ph-coffee" aria-hidden="true"></i> Buy me a coffee
+      </a>
+    </header>
 
-      <div class="skillgrid" id="skillGrid"></div>
+    <!-- ===================== MAIN GRID ===================== -->
+    <main class="grid">
 
-      <div class="cf-grid">
-        <div class="cf"><span class="cf-label"><i class="ph ph-globe-hemisphere-west"></i> Culture</span><span id="cultureVal" class="cf-val"></span></div>
-        <div class="cf"><span class="cf-label"><i class="ph ph-hands-praying"></i> Faith</span><span id="faithVal" class="cf-val"></span></div>
-      </div>
+      <!-- ---------- CONTROLS ---------- -->
+      <aside class="controls">
+        <section class="panel">
 
-      <div id="traitGroups"></div>
+          <div class="sec"><h3>Ruleset</h3><span class="rule"></span></div>
 
-      <p id="warn" class="warn" hidden></p>
+          <div class="stack">
+            <label class="chk">
+              <input type="checkbox" id="achievementToggle" checked>
+              <span class="box"><i class="ph ph-check" aria-hidden="true"></i></span>
+              <span>Achievement-eligible <span class="dim">(total ≤ 400)</span></span>
+            </label>
+            <label class="chk">
+              <input type="checkbox" id="ageToggle" checked>
+              <span class="box"><i class="ph ph-check" aria-hidden="true"></i></span>
+              <span>Count age cost in total</span>
+            </label>
+          </div>
+
+          <div class="field range-field">
+            <div class="field-head">
+              <label for="minPoints">Minimum points</label>
+              <span id="minPointsVal" class="val">0</span>
+            </div>
+            <input type="range" id="minPoints" min="0" max="380" step="10" value="0">
+          </div>
+
+          <div class="sec"><h3>Character</h3><span class="rule"></span></div>
+
+          <div class="field">
+            <label for="cultureSel"><i class="ph ph-globe-hemisphere-west"></i> Culture</label>
+            <div class="input-row">
+              <select id="cultureSel"></select>
+              <button type="button" class="lockbtn" id="cultureLock" aria-label="Lock culture" aria-pressed="false"><i class="ph ph-lock-open"></i></button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="faithSel"><i class="ph ph-cross"></i> Faith</label>
+            <div class="input-row">
+              <select id="faithSel"></select>
+              <button type="button" class="lockbtn" id="faithLock" aria-label="Lock faith" aria-pressed="false"><i class="ph ph-lock-open"></i></button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="ageInput"><i class="ph ph-hourglass-medium"></i> Age</label>
+            <div class="input-row">
+              <input type="number" id="ageInput" value="30" min="16" max="70">
+              <button type="button" class="lockbtn" id="ageLock" aria-label="Lock age" aria-pressed="false"><i class="ph ph-lock-open"></i></button>
+            </div>
+          </div>
+          <p class="hint">Leave unlocked to randomize; lock to keep the chosen value across generations.</p>
+
+          <div class="sec"><h3>Traits &amp; Focus</h3><span class="rule"></span></div>
+
+          <details class="collapse">
+            <summary>
+              <i class="ph ph-caret-right caret"></i>
+              <span class="c-title">DLCs you own</span>
+              <span class="dim">filters exclusive traits</span>
+            </summary>
+            <div class="c-body">
+              <div class="c-actions">
+                <button type="button" class="minibtn" id="dlcAll">Select all</button>
+                <button type="button" class="minibtn" id="dlcNone">None</button>
+              </div>
+              <div id="dlcList" class="checkgrid"></div>
+            </div>
+          </details>
+
+          <details class="collapse">
+            <summary>
+              <i class="ph ph-caret-right caret"></i>
+              <span class="c-title">Trait categories</span>
+              <span class="dim">besides personality + education</span>
+            </summary>
+            <div class="c-body">
+              <div id="catList" class="checkgrid"></div>
+            </div>
+          </details>
+
+          <div class="field">
+            <label for="focusSel"><i class="ph ph-crosshair"></i> Focus</label>
+            <select id="focusSel">
+              <option value="">Random (no focus)</option>
+              <option value="diplomacy">Diplomacy</option>
+              <option value="martial">Martial</option>
+              <option value="stewardship">Stewardship</option>
+              <option value="intrigue">Intrigue</option>
+              <option value="learning">Learning</option>
+              <option value="prowess">Prowess</option>
+            </select>
+            <p class="hint">A focus biases the education, the top skill and matching traits toward that attribute.</p>
+          </div>
+
+          <button type="button" class="btn generate" id="generate">
+            <i class="ph ph-dice-five"></i> Generate ruler
+          </button>
+
+        </section>
+      </aside>
+
+      <!-- ---------- RESULT ---------- -->
+      <section class="panel result" id="result">
+
+        <div class="pts-head">
+          <div class="ruler-id">
+            <i class="ph ph-crown ruler-crown" aria-hidden="true"></i>
+            <div>
+              <h2 id="charTitle">Random Ruler</h2>
+              <p id="charMeta" class="meta"></p>
+            </div>
+          </div>
+          <div class="pts-total">
+            <div class="lbl">Points used</div>
+            <div class="pts-num"><span id="ptUsed">0</span> <small>/ <span id="ptCap">400</span></small></div>
+          </div>
+        </div>
+
+        <div class="bar"><div id="barFill"></div></div>
+        <div class="pts-sub">
+          <span id="ptRemaining"></span>
+          <span id="ptBreakdown"></span>
+        </div>
+        <p id="warn" class="warn" hidden><i class="ph ph-warning"></i> Over 400 points — not achievement-eligible.</p>
+
+        <div class="sec"><h3>Skills</h3><span class="rule"></span></div>
+        <div id="skillGrid"></div>
+
+        <div class="cf-grid">
+          <div>
+            <div class="sec"><h3>Faith</h3><span class="rule"></span></div>
+            <div class="cf" id="faithVal">
+              <span class="cf-icon"><i class="ph ph-cross"></i></span>
+              <div><div class="cf-name"></div><div class="cf-sub"></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="sec"><h3>Culture</h3><span class="rule"></span></div>
+            <div class="cf" id="cultureVal">
+              <span class="cf-icon"><i class="ph ph-globe-hemisphere-west"></i></span>
+              <div><div class="cf-name"></div><div class="cf-sub"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="traitGroups"></div>
+
+        <footer class="foot">
+          <p id="dataMeta"></p>
+          <p class="disc">Unofficial fan-made tool. Not affiliated with, endorsed by, or sponsored by Paradox Interactive. Crusader Kings III is a trademark of Paradox Interactive AB.</p>
+        </footer>
+
+      </section>
+
+    </main>
+
+    <!-- ===================== SEO CONTENT (crawlable copy + FAQ) ===================== -->
+    <section class="panel about">
+      <h2>About the CK3 Random Ruler Designer</h2>
+      <p>This is a free, unofficial <strong>Crusader Kings III Ruler Designer generator</strong>. Instead of building a character by hand, it rolls a full random ruler for you — six skills, a batch of personality, education and lifestyle traits, plus a random culture and faith — while keeping the total within the <strong>400-point cap</strong> so the character stays <strong>achievement and ironman eligible</strong>.</p>
+      <p>The point math was reverse-engineered from the base game files and calibrated against real in-game totals: trait costs, skill costs (including how trait modifiers change what each skill point costs) and the age curve. Filter by the DLCs you own, pick a focus attribute to shape the build, set a minimum point budget, and lock culture, faith or age when you want to keep them fixed between rolls.</p>
+
+      <h3>Frequently asked questions</h3>
+      <details class="faq">
+        <summary>Does it respect the 400-point achievement cap?</summary>
+        <p>Yes. Builds stay under the 400-point cap by default so they remain achievement and ironman eligible, and every roll shows a full breakdown of age, skills and traits. You can also switch the cap off if you just want inspiration.</p>
+      </details>
+      <details class="faq">
+        <summary>Which DLCs are supported?</summary>
+        <p>Tick the DLCs you own and the generator only pulls traits you can actually use. Traits tied to Roads to Power, All Under Heaven, Wandering Nobles and Tours and Tournaments are mapped, and base-game-only players still get valid rulers.</p>
+      </details>
+      <details class="faq">
+        <summary>What is a focus build?</summary>
+        <p>Pick an attribute — Diplomacy, Martial, Stewardship, Intrigue, Learning or Prowess — and the generator biases the education, the top skill and supporting traits toward it. Leave it on “Random (no focus)” for a fully random ruler.</p>
+      </details>
+      <details class="faq">
+        <summary>Is it free and official?</summary>
+        <p>It is completely free, runs entirely in your browser with no login and no ads. It is an unofficial fan-made tool and is not affiliated with, endorsed by, or sponsored by Paradox Interactive.</p>
+      </details>
     </section>
-  </main>
 
-  <!-- ============ SEO CONTENT (crawlable copy + FAQ) ============ -->
-  <section class="panel about">
-    <h2>About the CK3 Random Ruler Designer</h2>
-    <p>This is a free, unofficial <strong>Crusader Kings III Ruler Designer generator</strong>. Instead of building a character by hand, it rolls a full random ruler for you — six skills, a batch of personality, education and lifestyle traits, plus a random culture and faith — while keeping the total within the <strong>400-point cap</strong> so the character stays <strong>achievement and ironman eligible</strong>.</p>
-    <p>The point math was reverse-engineered from the base game files and calibrated against real in-game totals: trait costs, skill costs (including how trait modifiers change what each skill point costs) and the age curve. Filter by the DLCs you own, pick a focus attribute to shape the build, set a minimum point budget, and lock culture, faith or age when you want to keep them fixed between rolls.</p>
+  </div>
 
-    <h3>Frequently asked questions</h3>
-    <details class="faq">
-      <summary>Does it respect the 400-point achievement cap?</summary>
-      <p>Yes. Builds stay under the 400-point cap by default so they remain achievement and ironman eligible, and every roll shows a full breakdown of age, skills and traits. You can also switch the cap off if you just want inspiration.</p>
-    </details>
-    <details class="faq">
-      <summary>Which DLCs are supported?</summary>
-      <p>Tick the DLCs you own and the generator only pulls traits you can actually use. Traits tied to Roads to Power, All Under Heaven, Wandering Nobles and Tours and Tournaments are mapped, and base-game-only players still get valid rulers.</p>
-    </details>
-    <details class="faq">
-      <summary>What is a focus build?</summary>
-      <p>Pick an attribute — Diplomacy, Martial, Stewardship, Intrigue, Learning or Prowess — and the generator biases the education, the top skill and supporting traits toward it. Leave it on “Random (no focus)” for a fully random ruler.</p>
-    </details>
-    <details class="faq">
-      <summary>Is it free and official?</summary>
-      <p>It is completely free, runs entirely in your browser with no login and no ads. It is an unofficial fan-made tool and is not affiliated with, endorsed by, or sponsored by Paradox Interactive.</p>
-    </details>
-  </section>
-
-  <footer>
-    <span id="dataMeta"></span> · data extracted from Crusader Kings III base game files<br>
-    Unofficial fan-made tool. Not affiliated with, endorsed by, or sponsored by Paradox Interactive. Crusader Kings III is a trademark of Paradox Interactive AB.
-  </footer>
-</div>
-<script src="data.js"></script>
-<script src="app.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
