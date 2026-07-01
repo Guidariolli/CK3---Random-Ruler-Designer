@@ -80,6 +80,18 @@
   }
   const conflictsAny = (t, chosen) => chosen.some(c => conflicts(t, c));
 
+  // Weighted-random ordering that softly favors traits boosting `focus` (traits that
+  // don't help it get weight ~1, anti-focus traits weight 0 and sink to the end).
+  // Not a deterministic pick, so no single trait is forced for a given focus.
+  function focusOrder(pool, focus) {
+    if (!focus) return pool;
+    const w = (t) => Math.max(0, 1 + (((t.modifiers && t.modifiers[focus]) || 0)));
+    return pool
+      .map(t => ({ t, k: w(t) * Math.random() }))
+      .sort((a, b) => b.k - a.k)
+      .map(x => x.t);
+  }
+
   // Age cost = floor(age * multiplier). The multiplier array has one extra leading entry
   // vs the levels array, so the multiplier for a level is at index+1. Verified against
   // in-game totals (age 18->48, 30->66, 33->62).
@@ -167,26 +179,17 @@
       chosen.push(t); traitSpent += t.cost; return true;
     };
 
-    // 2) personality — softly bias toward the focus skill instead of always picking the
-    //    single highest-modifier trait. Weighted-random order: focus traits are favored
-    //    but not guaranteed, so e.g. Martial focus no longer forces Wrathful every time.
-    //    When the trait isn't taken, the freed budget lets the (already boosted) focus
-    //    skill carry more points instead. Anti-focus traits (weight 0) stay excluded.
+    // 2) personality — softly bias toward the focus skill (weighted-random, not a fixed
+    //    pick). Applies to every focus; when the trait isn't taken, the freed budget lets
+    //    the already-boosted focus skill carry the points instead.
     let want = 1; while (want < 3 && Math.random() < 0.65) want++;
-    let persPool = shuffle(byCat("personality"));
-    if (focus) {
-      const fw = (t) => Math.max(0, 1 + (((t.modifiers && t.modifiers[focus]) || 0)));
-      persPool = persPool
-        .map(t => ({ t, k: fw(t) * Math.random() }))
-        .sort((a, b) => b.k - a.k)
-        .map(x => x.t);
-    }
+    let persPool = focusOrder(shuffle(byCat("personality")), focus);
     let added = 0;
     for (const t of persPool) { if (added >= want) break; if (tryAddTrait(t)) added++; }
 
-    // 3) extra categories
-    let extraPool = shuffle(pool.filter(t => extraCats.has(t.category)));
-    if (focus) extraPool.sort((a,b) => ((b.modifiers && b.modifiers[focus]) || 0) - ((a.modifiers && a.modifiers[focus]) || 0));
+    // 3) extra categories — same soft focus bias (weighted-random, not a fixed pick),
+    //    so a focus doesn't always add the single best lifestyle/other trait either.
+    let extraPool = focusOrder(shuffle(pool.filter(t => extraCats.has(t.category))), focus);
 
     if (minPts > 0) {
       const climbers = extraPool.filter(t => t.cost > 0).sort((a,b) => b.cost - a.cost);
