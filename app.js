@@ -315,6 +315,7 @@
       : "no limit (achievements off)";
     $("ptBreakdown").textContent =
       "Age " + r.age + " → " + r.aCost + " pts · Skills " + r.skCost + " pts · Traits " + r.traitSpent + " pts";
+    $("ageNote").hidden = !(r.age > 51);
 
     const box = $("traitGroups"); box.innerHTML = "";
     CAT_ORDER.forEach(cat => {

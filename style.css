@@ -232,6 +232,7 @@ input[type="range"]::-moz-range-thumb{
 .pts-sub{display:flex;justify-content:space-between;gap:14px;margin-top:9px;font-size:14px;color:var(--muted);}
 .pts-sub strong{color:var(--text);font-weight:600;}
 .pts-note{margin:9px 0 0;font-size:12.5px;color:#6f6650;font-style:italic;display:flex;align-items:center;gap:6px;}
+.pts-note[hidden]{display:none;}
 .pts-note i{font-size:14px;color:var(--muted);font-style:normal;}
 .warn{margin:10px 0 0;font-size:14px;color:var(--red);display:flex;align-items:center;gap:7px;}
 .warn[hidden]{display:none;}
@@ -279,6 +280,8 @@ input[type="range"]::-moz-range-thumb{
 .tname{font-size:16px;font-weight:700;color:var(--text);}
 .tpts{font-size:14px;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums;}
 .teff{font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:5px;}
+/* last trait of the whole list: drop the trailing divider */
+#traitGroups > div:last-child > .trait:last-child{border-bottom:none;}
 .tdlc{color:var(--blue);white-space:nowrap;}
 .tdlc i{font-size:.9em;}
 
@@ -294,8 +297,11 @@ input[type="range"]::-moz-range-thumb{
 .about p{margin:0 0 12px;color:var(--muted);max-width:80ch;}
 .about p strong{color:var(--gold);}
 .about details.faq{border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 14px;margin-bottom:8px;background:var(--panel2);}
-.about details.faq summary{cursor:pointer;font-weight:600;color:var(--gold2);}
-.about details.faq p{margin:8px 0 0;}
+.about details.faq summary{cursor:pointer;font-weight:600;color:var(--gold2);list-style:none;display:flex;align-items:center;gap:9px;}
+.about details.faq summary::-webkit-details-marker{display:none;}
+.about details.faq summary::before{content:"\203A";color:var(--gold);font-weight:700;font-size:1.15em;line-height:1;transition:transform .18s;}
+.about details.faq[open] summary::before{transform:rotate(90deg);}
+.about details.faq p{margin:8px 0 0 18px;}
 .about a{color:var(--blue);}
 
 /* ---------------- Responsive ---------------- */
