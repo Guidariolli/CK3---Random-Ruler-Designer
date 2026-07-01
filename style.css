@@ -235,7 +235,9 @@ input[type="range"]::-moz-range-thumb{
 .warn[hidden]{display:none;}
 
 /* ---------------- Result: skills ---------------- */
-#skillGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;}
+/* column-major order to match the in-game skill layout:
+   left col = Diplomacy / Martial / Stewardship, right col = Intrigue / Learning / Prowess */
+#skillGrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:0 36px;}
 .skill{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:14px 0;border-bottom:1px solid var(--line);
@@ -301,6 +303,7 @@ input[type="range"]::-moz-range-thumb{
   .controls{position:static;}
   .result{padding:22px 20px;}
   #skillGrid,.cf-grid,.checkgrid{grid-template-columns:1fr;}
+  #skillGrid{grid-auto-flow:row;grid-template-rows:auto;}
   .cf-grid{gap:0;}
   .topbar{flex-direction:column;gap:16px;}
   .about{padding:22px 20px;}

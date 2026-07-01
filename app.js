@@ -311,7 +311,7 @@
       ? (rem >= 0 ? rem + " points remaining (banked)" : '<span style="color:var(--red)">' + (-rem) + " over the limit!</span>")
       : "no limit (achievements off)";
     $("ptBreakdown").textContent =
-      "Age " + r.aCost + " · Skills " + r.skCost + " · Traits " + r.traitSpent;
+      "Age " + r.age + " → " + r.aCost + " pts · Skills " + r.skCost + " pts · Traits " + r.traitSpent + " pts";
 
     const box = $("traitGroups"); box.innerHTML = "";
     CAT_ORDER.forEach(cat => {
