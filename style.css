@@ -280,8 +280,11 @@ input[type="range"]::-moz-range-thumb{
 .tname{font-size:16px;font-weight:700;color:var(--text);}
 .tpts{font-size:14px;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums;}
 .teff{font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:5px;}
-/* last trait of the whole list: drop the trailing divider */
-#traitGroups > div:last-child > .trait:last-child{border-bottom:none;}
+/* last (or only) trait of each group: no trailing divider before the next section */
+#traitGroups > div > .trait:last-child{border-bottom:none;}
+/* trait section headers were losing their top margin to .sec:first-child (sat glued
+   to the block above); restore breathing room above each group title */
+#traitGroups .sec{margin-top:28px;}
 .tdlc{color:var(--blue);white-space:nowrap;}
 .tdlc i{font-size:.9em;}
 
