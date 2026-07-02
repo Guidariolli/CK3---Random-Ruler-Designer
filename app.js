@@ -379,7 +379,13 @@
     });
 
     const mp = $("minPoints");
-    const syncMin = () => { $("minPointsVal").textContent = mp.value; };
+    const syncMin = () => {
+      $("minPointsVal").textContent = mp.value;
+      const lo = +mp.min || 0, hi = +mp.max || 100;
+      const pct = hi > lo ? ((mp.value - lo) / (hi - lo)) * 100 : 0;
+      mp.style.background =
+        "linear-gradient(90deg,var(--gold) 0%,var(--gold) " + pct + "%,#0f1216 " + pct + "%)";
+    };
     mp.addEventListener("input", syncMin); syncMin();
 
     // Lock buttons (design uses <button> instead of a checkbox). We toggle a
