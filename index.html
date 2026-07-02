@@ -151,7 +151,7 @@
             <input type="range" id="minPoints" min="0" max="380" step="10" value="0">
           </div>
 
-          <div class="sec"><h3>Character</h3><span class="rule"></span></div>
+          <div class="sec"><h3>Character</h3><span class="rule"></span><span class="info" tabindex="0" role="note" aria-label="Leave unlocked to randomize; lock to keep the chosen value across generations." data-tip="Leave unlocked to randomize; lock to keep the chosen value across generations."><i class="ph ph-info" aria-hidden="true"></i></span></div>
 
           <div class="field">
             <label for="cultureSel"><i class="ph ph-globe-hemisphere-west"></i> Culture</label>
@@ -176,9 +176,9 @@
               <button type="button" class="lockbtn" id="ageLock" aria-label="Lock age" aria-pressed="false"><i class="ph ph-lock-open"></i></button>
             </div>
           </div>
-          <p class="hint">Leave unlocked to randomize; lock to keep the chosen value across generations.</p>
 
-          <div class="sec"><h3>Traits &amp; Focus</h3><span class="rule"></span></div>
+          <div class="sec"><h3>Traits &amp; Focus</h3><span class="rule"></span><span class="info" tabindex="0" role="note" aria-label="Focus biases the education, the top skill and matching traits toward that attribute. Strength sets how much of the 400 goes into skills." data-tip="Focus — biases the education, the top skill and matching traits toward that attribute.
+Strength — how much of the 400 goes into skills: Weak keeps the original spread; Balanced aims higher and sometimes rolls a standout skill; Skill-heavy pushes one skill high (your Focus, or a random one if none is set)."><i class="ph ph-info" aria-hidden="true"></i></span></div>
 
           <details class="collapse">
             <summary>
@@ -221,7 +221,15 @@
               <option value="learning">Learning</option>
               <option value="prowess">Prowess</option>
             </select>
-            <p class="hint">A focus biases the education, the top skill and matching traits toward that attribute.</p>
+          </div>
+
+          <div class="field">
+            <label for="strengthSel"><i class="ph ph-lightning"></i> Strength</label>
+            <select id="strengthSel">
+              <option value="weak">Weak</option>
+              <option value="balanced" selected>Balanced</option>
+              <option value="skillHeavy">Skill-heavy</option>
+            </select>
           </div>
 
           <button type="button" class="btn generate" id="generate">

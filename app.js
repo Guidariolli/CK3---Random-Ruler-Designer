@@ -113,9 +113,17 @@
                         : DATA.config.attribute_costs.general.table;
     return t[String(clamp(base, 0, 20))] || 0;
   }
-  function rollDisplay() {
-    let v = 5 + rand(7);                 // 5..11
-    if (Math.random() < 0.25) v += rand(5); // occasional spike up to ~15
+  // Skill TARGET distribution per strength tier. Point costs stay game-accurate;
+  // only how high we aim changes — the trim + 400 cap still bound the final total.
+  //   weak       = the original spread (5..11, rare spike) — unchanged
+  //   balanced   = aims a touch higher (6..12) and spikes more often
+  //   skillHeavy = aims higher still (7..13) and spikes hard
+  function rollDisplay(mode) {
+    const cfg = mode === "skillHeavy" ? { lo:7, span:7, spike:0.45, amt:6 }
+              : mode === "weak"       ? { lo:5, span:7, spike:0.25, amt:5 }
+              :                         { lo:6, span:7, spike:0.35, amt:6 }; // balanced
+    let v = cfg.lo + rand(cfg.span);
+    if (Math.random() < cfg.spike) v += rand(cfg.amt);
     return clamp(v, 0, 18);
   }
 
@@ -147,6 +155,7 @@
     const cap = DATA.config.point_cap;
     const minPts = parseInt($("minPoints").value, 10) || 0;
     const focus = $("focusSel").value; // "" or a skill key
+    const strength = $("strengthSel") ? $("strengthSel").value : "balanced"; // weak | balanced | skillHeavy
 
     const pool = TRAITS.filter(t => (!t.dlc || ownedDlc.has(t.dlc)) && Math.abs(t.cost) < COST_CEILING);
     const byCat = (c) => pool.filter(t => t.category === c);
@@ -178,7 +187,13 @@
 
     // reserve part of the budget for skills so traits don't consume everything
     const eduCost = education ? education.cost : 0;
-    const skillReserve = capOn ? Math.floor(Math.max(0, cap - aCost - eduCost) * (0.18 + Math.random() * 0.3)) : 0;
+    // reserve a larger share for skills in the stronger tiers so traits don't starve them
+    const reserveBand = strength === "skillHeavy" ? [0.40, 0.28]
+                      : strength === "weak"       ? [0.18, 0.30]   // unchanged
+                      :                             [0.28, 0.28];  // balanced
+    const skillReserve = capOn
+      ? Math.floor(Math.max(0, cap - aCost - eduCost) * (reserveBand[0] + Math.random() * reserveBand[1]))
+      : 0;
     const traitBudget = () => capOn ? cap - aCost - traitSpent - skillReserve : Infinity;
     const tryAddTrait = (t) => {
       if (!t || conflictsAny(t, chosen)) return false;
@@ -218,13 +233,23 @@
 
     // 4) skills — base = displayed - trait modifiers; cost = table[base] from 0
     const mods = skillModsOf(chosen);
-    const skills = SKILLS.map(s => {
+    // specialist: elevate ONE skill to a standout peak. skillHeavy always does it,
+    // balanced sometimes. The peak lands on the Focus skill if set, else a random one;
+    // it's flagged protected so the fit-to-cap trim below spares it.
+    const wantSpec = strength === "skillHeavy" ? true
+                   : strength === "balanced"   ? Math.random() < 0.5
+                   :                             false;
+    let specIdx = -1;
+    if (wantSpec) specIdx = focus ? SKILLS.findIndex(s => s[0] === focus) : rand(SKILLS.length);
+    const specTarget = () => strength === "skillHeavy" ? 16 + rand(2) : 15 + rand(3); // 16..17 / 15..17
+    const skills = SKILLS.map((s, i) => {
       const key = s[0], label = s[1], prow = s[2];
-      let target = rollDisplay();
+      let target = rollDisplay(strength);
       if (focus === key) target = 12 + rand(5);                 // focus skill 12..16
+      if (i === specIdx) target = Math.max(target, specTarget()); // standout peak
       if (key === edu.skill && edu.bonus > target) target = edu.bonus; // education floor
       const base = Math.max(0, target - (mods[key] || 0));
-      return { key, label, prow, base, mod: mods[key] || 0 };
+      return { key, label, prow, base, mod: mods[key] || 0, protect: i === specIdx };
     });
     const displayed = (s) => s.base + s.mod;
     const skillTotal = () => skills.reduce((a, s) => a + tableCost(s.base, s.prow), 0);
@@ -235,9 +260,13 @@
       let guard = 0;
       while (skillTotal() > remaining && guard < 800) {
         guard++;
-        const cand = skills.filter(s => s.base > 0).sort((a,b) => b.base - a.base)[0];
-        if (!cand) break;
-        cand.base--;
+        // shave the highest NON-protected skill first so a standout survives; only
+        // touch a protected peak as a last resort — the cap is never exceeded either way.
+        let pool = skills.filter(s => s.base > 0 && !s.protect);
+        if (!pool.length) pool = skills.filter(s => s.base > 0);
+        if (!pool.length) break;
+        pool.sort((a,b) => b.base - a.base);
+        pool[0].base--;
       }
     }
     const skCost = skillTotal();
