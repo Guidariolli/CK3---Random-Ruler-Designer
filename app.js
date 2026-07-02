@@ -272,7 +272,7 @@
 
   function render(r) {
     $("result").hidden = false;
-    $("charTitle").textContent = 'Random Ruler'
+    $("charTitle").textContent = 'Your Ruler'
       + (r.focus ? ' · ' + r.focus.charAt(0).toUpperCase() + r.focus.slice(1) + ' focus' : '');
     $("charMeta").innerHTML =
       r.gender + " · Age <strong>" + r.age + "</strong>" +
