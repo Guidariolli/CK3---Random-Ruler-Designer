@@ -29,7 +29,7 @@ body{
     radial-gradient(120% 95% at 92% 4%, rgba(150,120,74,.09), transparent 50%),
     linear-gradient(180deg,#14171c 0%,#0e1013 60%,#0b0d10 100%);
   color:var(--text);
-  font-family:"Segoe UI",Roboto,system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  font-family:"Urbanist","Segoe UI",Roboto,system-ui,-apple-system,Helvetica,Arial,sans-serif;
   font-size:16px;
   line-height:1.5;
   min-height:100vh;
@@ -53,7 +53,6 @@ strong{font-weight:600;}
   margin-bottom:30px;
 }
 .brand{display:flex;gap:16px;align-items:flex-start;}
-.brand-mark{font-size:30px;color:var(--gold);margin-top:4px;}
 .topbar h1{margin:0;font-size:29px;line-height:1.1;font-weight:700;letter-spacing:.01em;color:var(--text);}
 .sub{margin:8px 0 0;font-size:15.5px;color:var(--muted);max-width:640px;}
 .sub strong{color:var(--gold);}
@@ -208,7 +207,6 @@ input[type="range"]::-moz-range-thumb{
 /* ---------------- Result: points header ---------------- */
 .pts-head{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;flex-wrap:wrap;}
 .ruler-id{display:flex;gap:13px;align-items:flex-start;}
-.ruler-crown{font-size:26px;color:var(--gold);margin-top:2px;}
 .result h2{margin:0;font-size:25px;font-weight:700;line-height:1;color:var(--text);}
 .meta{margin:8px 0 0;font-size:15px;color:var(--muted);}
 .meta strong{color:var(--text);}
@@ -297,7 +295,7 @@ input[type="range"]::-moz-range-thumb{
 .about{margin-top:24px;padding:24px 26px 26px;}
 .about h2{margin:0 0 10px;color:var(--gold2);font-size:20px;}
 .about h3{margin:22px 0 12px;color:var(--gold2);font-size:15px;letter-spacing:.02em;}
-.about p{margin:0 0 12px;color:var(--muted);max-width:80ch;}
+.about p{margin:0 0 12px;color:var(--muted);}
 .about p strong{color:var(--gold);}
 .about details.faq{border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 14px;margin-bottom:8px;background:var(--panel2);}
 .about details.faq summary{cursor:pointer;font-weight:600;color:var(--gold2);list-style:none;display:flex;align-items:center;gap:9px;}
